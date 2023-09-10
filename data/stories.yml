@@ -1,0 +1,52 @@
+version: "3.1"
+
+stories:
+- story: Saludar al inicio
+  steps:
+  - action: action_session_start
+
+- story: normal path
+  steps:
+  - intent: saludar
+  - action: utter_decir_hola
+  - intent: preguntar_animo
+  - action: action_respuesta_animo
+
+- story: interactive_story_1
+  steps:
+  - intent: saludar
+  - action: utter_decir_hola
+  - intent: preguntar_animo
+  - action: action_respuesta_animo
+  - intent: saludar
+  - action: utter_decir_hola
+  - intent: saludar
+  - intent: preguntar_animo
+  - action: action_respuesta_animo
+
+
+- story: interactive_story_1
+  steps:
+  - intent: saludar
+  - action: utter_decir_hola
+  - intent: preguntar_animo
+  - action: action_respuesta_animo
+  - intent: contar_chiste
+  - intent: contar_chiste
+  - action: utter_contar_chiste
+  - intent: contar_chiste
+  - action: utter_contar_chiste
+  - intent: despedir
+  - action: utter_decir_adios
+  - intent: preguntar_animo
+  - intent: confirmar
+  - action: utter_confirmacion
+
+- story: interactive_story_1
+  steps:
+  - intent: saludar
+  - action: utter_decir_hola
+
+- story: interactive_story_1
+  steps:
+  - intent: session_start

@@ -1,0 +1,9 @@
+version: "3.1"
+
+rules:
+
+- rule: decir adios cuando alguien se despide
+  steps:
+  - intent: despedir
+  - action: utter_decir_adios
+

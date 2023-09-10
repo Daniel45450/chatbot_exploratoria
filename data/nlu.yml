@@ -1,0 +1,71 @@
+version: "3.1"
+nlu:
+- intent: saludar
+  examples: |
+    - "¡Hola!"
+    - "Hola, ¿cómo estás?"
+    - "¡Buen día!"
+    - "Buenas tardes"
+    - "¡Hola a todos!"
+    - "Buenas que tal?"
+    - "Buenas"
+    - "Que onda?"
+    - hola
+    - Buenas noches
+    - hola que tal
+- intent: preguntar_animo
+  examples: |
+    - "Hola, ¿cómo estás?"
+    - "¿Cómo te sientes hoy?"
+    - "¿Eres feliz?"
+    - "¿Estás triste?"
+    - "¿Cómo va tu día?"
+    - "¿Cómo te encuentras?"
+    - "¿Tienes un buen ánimo?"
+    - "¿Cómo estuvo tu día?"
+    - "¿Cuál es tu estado de ánimo?"
+    - "¿Estás de buen humor?"
+    - Como estas?
+    - Eres feliz?
+    - Hola que tal estas hoy?
+    - Como estas hoy?
+- intent: despedir
+  examples: |
+    - "¡Adiós!"
+    - "Hasta luego"
+    - "Nos vemos"
+    - "Chau"
+    - "Bye"
+    - "Hasta la próxima"
+    - "Nos vimos"
+    - Nos vemos
+- intent: confirmar
+  examples: |
+    - "Sí"
+    - "Claro"
+    - "Está bien"
+    - "Por supuesto"
+    - "Confirmo"
+    - "Así es"
+    - "Afirmativo"
+    - "Correcto"
+    - "ok"
+    - Sos humoristas?
+- intent: negar
+  examples: |
+    - No
+    - No, gracias
+    - No estoy interesado
+    - Prefiero no
+    - No, en este momento
+    - Lo siento, pero no
+    - No, no quiero
+- intent: contar_chiste
+  examples: |
+    - Contame un chiste por favor
+    - un chiste pls
+    - haceme reir
+    - decime un chiste
+    - necesito que me cuentes un chiste
+    - contar chiste
+    - Contame otro chiste

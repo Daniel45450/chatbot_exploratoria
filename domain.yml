@@ -1,0 +1,74 @@
+version: '3.1'
+actions:
+- utter_decir_hola
+- utter_decir_adios
+- utter_contar_chiste
+- action_respuesta_animo
+- utter_confirmacion
+- action_session_start
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+entities:
+- nombre
+intents:
+- Presentarse
+- confirmar
+- contar_chiste
+- despedir
+- negar
+- preguntar_animo
+- saludar
+- session_start
+responses:
+  utter_decir_adios:
+  - text: Adiós
+  - text: Nos vemos
+  - text: Cuídate
+  - text: Hasta luego
+  - text: Chau, nos vemos
+  - text: Adiós. Que tengas un buen día
+  utter_decir_hola:
+  - text: Hola que tal
+  - text: Hola, ¿cómo estás?
+  - text: ¿Qué onda? ¿Todo bien?
+  - text: Buenas
+  - text: Hola, buen día
+  - text: ¿Qué tal?
+  utter_confirmacion:
+  - text: Sí
+  - text: Claro
+  - text: Está bien
+  - text: Por supuesto
+  - text: Confirmo
+  - text: Así es
+  - text: Afirmativo
+  - text: Correcto
+  utter_negacion:
+  - text: No
+  - text: No, gracias
+  - text: No estoy interesado
+  - text: Lo siento, pero no
+  - text: Prefiero no
+  utter_animo_bueno:
+  - text: ¡Me siento genial! Gracias por preguntar.
+  - text: Estoy teniendo un día maravilloso, ¡gracias!
+  - text: Mi ánimo es positivo y lleno de energía.
+  - text: Me encuentro en un buen estado de ánimo.
+  - text: ¡Hoy estoy de muy buen humor!
+  utter_animo_malo:
+  - text: Honestamente, no estoy programado para sentir emociones, pero estoy aquí para ayudarte en lo que necesites.
+  - text: No tengo emociones, pero estoy aquí para asistirte en lo que pueda.
+  - text: No tengo estados de ánimo como los humanos, pero estoy disponible para responder tus preguntas.
+  - text: No experimento emociones, pero estoy listo para responder tus consultas.
+  utter_contar_chiste:
+  - text: ¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.
+  - text: ¿Qué hace una abeja en el gimnasio? ¡Zum-ba!
+  - text: ¿Por qué los esqueletos no pelean entre ellos? Porque no tienen agallas.
+  - text: ¿Qué hace una vaca cuando está aburrida? ¡Ver la tele!
+  - text: ¿Qué le dijo una impresora a otra impresora? "¿Esa hoja es tuya o es una impresión mía?"
+  - text: ¿Cómo se dice pelo sucio en chino? Chin cham pu.
+  - text: ¿Qué hace una abeja en el gimnasio? ¡Zum-ba!
+  - text: ¿Por qué los elefantes no usan computadoras? Porque tienen miedo al ratón.
+  - text: ¿Qué le dijo el semáforo al coche? "No me mires, me estoy cambiando."
+  - text: ¿Cómo se llama el campeón de buceo japonés? Tokofondo.
