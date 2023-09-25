@@ -4,7 +4,7 @@
 % cantidad_stock, precio)
 
 producto(p1, [ropa, camiseta],[talle="M", color="rojo"], ["Camiseta roja de talla M"], zara, 5, 200).
-producto(p2, [ropa, pantalón], [talle="32", color="azul"], ["Pantalón azul de talla 32"], kill, 8, 300).
+producto(p2, [ropa, pantalï¿½n], [talle="32", color="azul"], ["Pantalï¿½n azul de talla 32"], kill, 8, 300).
 producto(p3, [ropa, vestido], [talle="S", color="negro"], ["Vestido negro de talla S"], dafiti, 6, 150).
 
 % calzado
@@ -20,8 +20,8 @@ producto(p7, [alimentos, lacteos], [tamano="1"], ["Leche entera de 1 litro"], se
 producto(p8, [alimentos, frutas], [tamano="mediano"], ["Manzana", "Manzana fresca", "Manzana fresca de temporada"], gala, 5, 500).
 producto(p9, [alimentos, snacks], [tamano="0.25", gusto=salado], ["Chips de papas", "Chips de papas salados", "Bolsa de chips de papas salados"], lays, 9, 20).
 
-% joyería
-producto(p10, [joyas, collares], [material="plata"], ["Collar de plata", "Collar de plata con colgante de corazón", "Collar de plata con colgante de corazón", "Joyería Fina"], boucheron, 3, 150).
+% joyerï¿½a
+producto(p10, [joyas, collares], [material="plata"], ["Collar de plata", "Collar de plata con colgante de corazï¿½n", "Collar de plata con colgante de corazï¿½n", "Joyerï¿½a Fina"], boucheron, 3, 150).
 producto(p11, [joyas, anillos], [material="diamante"], ["Anillo de compromiso", "Anillo de compromiso con diamante", "Anillo de compromiso con diamante de corte brillante"], avon, 2, 300).
 producto(p12, [joyas, pulseras], [material="oro"], ["Pulsera de oro", "Pulsera de oro con eslabones entrelazados", "Pulsera de oro con eslabones entrelazados"], cartier, 1, 400).
 
@@ -59,3 +59,7 @@ filtrar_precio_max(Precio, Productos):- findall(Producto, (
 ), Productos).
 
 filtrar_por_marca(Marca, Productos):- findall(Producto, (producto(Producto, _, _, _, MarcaProducto, _, _), MarcaProducto = Marca), Productos).
+
+% usuarios (usuario(nombre, email, contrasena, [productoscomprados])).
+
+

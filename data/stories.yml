@@ -1,52 +1,39 @@
 version: "3.1"
 
 stories:
-- story: Saludar al inicio
-  steps:
-  - action: action_session_start
 
-- story: normal path
+- story: crear_cuenta_de_usuario
+  steps:
+  - intent: crear_cuenta
+  - action: utter_inicio_crear_cuenta
+  - action: registro_form
+  - active_loop: registro_form
+  - slot_was_set:
+    - requested_slot: nombre
+  - slot_was_set:
+    - requested_slot: correo_electronico
+  - slot_was_set:
+    - requested_slot: telefono
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_datos_registro
+  or: 
+    - intent: confirmar
+      slot_was_set:
+       - datos_correctos: true
+    - intent: negar
+      - slot_was_set:
+        - datos_correctos: false
+        
+- story: charla_normal
   steps:
   - intent: saludar
   - action: utter_decir_hola
   - intent: preguntar_animo
   - action: action_respuesta_animo
-
-- story: interactive_story_1
-  steps:
-  - intent: saludar
-  - action: utter_decir_hola
-  - intent: preguntar_animo
-  - action: action_respuesta_animo
-  - intent: saludar
-  - action: utter_decir_hola
-  - intent: saludar
-  - intent: preguntar_animo
-  - action: action_respuesta_animo
-
-
-- story: interactive_story_1
-  steps:
-  - intent: saludar
-  - action: utter_decir_hola
-  - intent: preguntar_animo
-  - action: action_respuesta_animo
-  - intent: contar_chiste
-  - intent: contar_chiste
-  - action: utter_contar_chiste
   - intent: contar_chiste
   - action: utter_contar_chiste
   - intent: despedir
   - action: utter_decir_adios
-  - intent: preguntar_animo
-  - intent: confirmar
-  - action: utter_confirmacion
 
-- story: interactive_story_1
-  steps:
-  - intent: saludar
-  - action: utter_decir_hola
-
-- story: interactive_story_1
-  steps:
-  - intent: session_start

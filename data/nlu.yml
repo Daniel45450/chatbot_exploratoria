@@ -10,9 +10,11 @@ nlu:
     - "Buenas que tal?"
     - "Buenas"
     - "Que onda?"
+    - "hola"
+    - "Buenas noches"
+    - "hola que tal"
+    - "Hola"
     - hola
-    - Buenas noches
-    - hola que tal
 - intent: preguntar_animo
   examples: |
     - "Hola, ¿cómo estás?"
@@ -25,10 +27,12 @@ nlu:
     - "¿Cómo estuvo tu día?"
     - "¿Cuál es tu estado de ánimo?"
     - "¿Estás de buen humor?"
-    - Como estas?
-    - Eres feliz?
-    - Hola que tal estas hoy?
-    - Como estas hoy?
+    - "Como estas?"
+    - "Eres feliz?"
+    - "Hola que tal estas hoy?"
+    - "Como estas hoy?"
+    - "Si bien y vos"
+    - que tal estas?
 - intent: despedir
   examples: |
     - "¡Adiós!"
@@ -38,7 +42,9 @@ nlu:
     - "Bye"
     - "Hasta la próxima"
     - "Nos vimos"
-    - Nos vemos
+    - "bye"
+    - Nos vemos luego
+    - Bueno listo ya estaria nos vemos
 - intent: confirmar
   examples: |
     - "Sí"
@@ -50,22 +56,101 @@ nlu:
     - "Afirmativo"
     - "Correcto"
     - "ok"
-    - Sos humoristas?
+    - "Sos humoristas?"
 - intent: negar
   examples: |
-    - No
-    - No, gracias
-    - No estoy interesado
-    - Prefiero no
-    - No, en este momento
-    - Lo siento, pero no
-    - No, no quiero
+    - "No"
+    - "No, gracias"
+    - "No estoy interesado"
+    - "Prefiero no"
+    - "No, en este momento"
+    - "Lo siento, pero no"
+    - "No, no quiero"
 - intent: contar_chiste
   examples: |
-    - Contame un chiste por favor
-    - un chiste pls
-    - haceme reir
-    - decime un chiste
-    - necesito que me cuentes un chiste
-    - contar chiste
-    - Contame otro chiste
+    - "Contame un chiste por favor"
+    - "un chiste pls"
+    - "haceme reir"
+    - "decime un chiste"
+    - "necesito que me cuentes un chiste"
+    - "contar chiste"
+    - "Contame otro chiste"
+    - Contame un chiste
+- intent: dar_telefono
+  examples: |
+    - "mi telefono es {telefono}"
+    - "telefono: {telefono}"
+    - "mi celular es {telefono}"
+    - "este es mi numero {telefono}"
+    - "{telefono}"
+    - "mi numero de telefono es [2281682610](telefono)"
+    - el numero de telefono es [0249548725](telefono)
+    - el numero es [0482569820](telefono)
+- intent: dar_nombre
+  examples: |
+    - "mi nombre es {nombre}"
+    - "soy {nombre}"
+    - "me dicen {nombre}"
+    - "llamame {nombre}"
+    - "{nombre}"
+    - "Me llamo [Daniel](nombre)"
+    - "me llamo [Lara](nombre)"
+    - "mi nombre es [fabian](nombre)"
+    - "mi nombre es fabian"
+    - "[Carlos](nombre)"
+    - "[maría](nombre)"
+    - "[juan](nombre)"
+    - "[Laura](nombre)"
+    - "[pedro](nombre)"
+    - "[Ana](nombre)"
+    - "[Javier](nombre)"
+    - "[susana](nombre)"
+    - "[Diego](nombre)"
+    - "[gabriela](nombre)"
+- intent: dar_correo_electronico
+  examples: |
+    - "mi correo es {correo_electronico}"
+    - "este es mi email {correo_electronico}"
+    - "email: {correo_electronico}"
+    - "correo: {correo_electronico}"
+    - "{correo_electronico}"
+    - "mi email es [danielgabinari@hotmail.com](correo_electronico)"
+    - [lara@gmail.com](correo_electronico)
+    - [fabian123@yahoo.com](correo_electronico)
+- intent: crear_cuenta
+  examples: |
+    - "Me gustaria registrarme en el sistema"
+    - "Como me registro para realizar compras?"
+    - "Me puedo crear una cuenta?"
+    - "Quiero registrarme"
+    - "Dame una cuenta"
+    - "registrarse"
+    - "Quiero registrarme en su plataforma."
+    - "Necesito crear una cuenta."
+    - "¿Cómo puedo hacer un registro?"
+    - "Por favor, ayúdame a iniciar el proceso de registro."
+    - "¿Cuáles son los pasos para crear una cuenta?"
+    - "Me gustaría inscribirme en su servicio."
+    - "¿Puedo obtener una cuenta en este sitio?"
+    - "Iniciaré el proceso de registro."
+    - Quisiera registrarme
+    - quisiera registrarme
+    - me quiero registrar
+
+- intent: comprar_zapatos
+  examples: |
+    - "Me gustaría comprar [zapatillas](producto)"
+    - "Quiero comprar [zapatos](producto)"
+    - "Necesito unos [zapatos nuevos](producto)"
+    - "Estoy buscando [calzado](producto)"
+    - "¿Tienen [zapatillas deportivas](producto)?"
+- intent: comprar_camisetas
+  examples: |
+    - "Quiero una [camiseta](producto)"
+    - "Me gustaría comprar [ropa](producto)"
+    - "¿Tienen [camisetas de algodón](producto)?"
+- intent: comprar_pantalones
+  examples: |
+    - "Necesito [pantalones](producto)"
+    - "Estoy buscando [jeans](producto)"
+    - "¿Tienen [pantalones cortos](producto)?"
