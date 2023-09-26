@@ -1,55 +1,74 @@
 version: '3.1'
 actions:
-- utter_decir_hola
-- utter_ask_telefono
-- utter_datos_registro
-- utter_decir_adios
-- utter_info_registro
-- action_iniciar_formulario_contacto
 - utter_inicio_crear_cuenta
+- utter_datos_registro
+- action_registrar
+- utter_submit
+- utter_decir_adios
+- utter_decir_hola
 - action_respuesta_animo
 - utter_contar_chiste
 - utter_confirmacion
+- validate_registro_form
 - utter_ask_nombre
 - utter_ask_correo_electronico
-- validate_registro_form
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
-entities:
-- correo_electronico
-- telefono
-- nombre
-slots:
-  nombre:
-    type: text
-    mappings:
-    - type: from_entity
-      entity: nombre
-  correo_electronico:
-    type: text
-    mappings:
-    - type: from_entity
-      entity: correo_electronico
-  telefono:
-    type: text
-    mappings:
-    - type: from_entity
-      entity: telefono
+- utter_ask_telefono
+- utter_info_registro
+- utter_ask_direccion_entrega
 forms:
   registro_form:
     required_slots:
     - nombre
     - correo_electronico
     - telefono
+    - direccion_entrega
+    - contrasena
+slots:
+  nombre:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: registro_form
+        requested_slot: nombre
+  correo_electronico:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: registro_form
+        requested_slot: correo_electronico
+  contrasena:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: registro_form
+        requested_slot: contrasena
+  telefono:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: registro_form
+        requested_slot: telefono
+  direccion_entrega:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: registro_form
+        requested_slot: direccion_entrega
 intents:
 - Presentarse
 - confirmar
 - contar_chiste
 - crear_cuenta
-- dar_correo_electronico
-- dar_nombre
-- dar_telefono
 - despedir
 - negar
 - preguntar_animo
@@ -109,7 +128,7 @@ responses:
   - text: ¿Qué le dijo el semáforo al coche? "No me mires, me estoy cambiando."
   - text: ¿Cómo se llama el campeón de buceo japonés? Tokofondo.
   utter_inicio_crear_cuenta:
-  - text: ¡Genial! Estás a punto de comenzar el proceso de registro. Por favor, proporciona la información requerida.
+  - text: ¡Genial! Estás a punto de comenzar el proceso de registro.
   - text: ¡Perfecto! Vamos a pedirte unos datos a continuacion
   - text: Ok vamos a registrarte en el sistema, te pediremos algunos datos
   utter_ask_nombre:
@@ -124,5 +143,15 @@ responses:
   - text: Por favor, dime tu correo electronico.
   - text: Cual es tu email?
   - text: Cual es tu direccion de correo electronico?
+  utter_ask_direccion_entrega:
+  - text: Cual es tu domicilio?
+  - text: Donde debemos entregar el producto?
+  utter_ask_contrasena:
+  - text: Escribe una contraseña
   utter_datos_registro:
-  - text: 'Datos registrados: nombre: {nombre}, email: {correo_electronico}, telefono: {telefono} \nLos datos son correctos?'
+  - text: 'Nombre: {nombre}, Email: {correo_electronico}, Telefono: {telefono}, Direccion: {direccion_entrega} \nLos datos son correctos?'
+  utter_submit:
+  - text: Ok. Gracias!
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

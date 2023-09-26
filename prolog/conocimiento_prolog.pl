@@ -1,10 +1,12 @@
 :- use_module(library(lists)).
+:- dynamic usuario/6.
+
 
 %producto(id, [categorias], [atributos], [descripciones], marca,
 % cantidad_stock, precio)
 
 producto(p1, [ropa, camiseta],[talle="M", color="rojo"], ["Camiseta roja de talla M"], zara, 5, 200).
-producto(p2, [ropa, pantal�n], [talle="32", color="azul"], ["Pantal�n azul de talla 32"], kill, 8, 300).
+producto(p2, [ropa, pantalon], [talle="32", color="azul"], ["Pantalon azul de talla 32"], kill, 8, 300).
 producto(p3, [ropa, vestido], [talle="S", color="negro"], ["Vestido negro de talla S"], dafiti, 6, 150).
 
 % calzado
@@ -60,6 +62,13 @@ filtrar_precio_max(Precio, Productos):- findall(Producto, (
 
 filtrar_por_marca(Marca, Productos):- findall(Producto, (producto(Producto, _, _, _, MarcaProducto, _, _), MarcaProducto = Marca), Productos).
 
-% usuarios (usuario(nombre, email, contrasena, [productoscomprados])).
+% usuarios (usuario(nombre, email, contrasena,telefono
+% [productoscomprados], direccion)).
 
+usuario("Daniel", "danielgabinari@hotmail.com", "2281682610", "1234", [], "MARTIN M").
+
+existe_usuario(Email):- usuario(_,Email,_,_,_,_).
+
+agregar_usuario(Nombre, Email, Telefono, Contrasena, Direccion) :-
+    not(existe_usuario(Email)), assert(usuario(Nombre, Email, Telefono, Contrasena, [], Direccion)).
 

@@ -45,6 +45,10 @@ nlu:
     - "bye"
     - Nos vemos luego
     - Bueno listo ya estaria nos vemos
+    - Nos vemos
+    - Martin M
+    - San M
+    - nos vemos
 - intent: confirmar
   examples: |
     - "Sí"
@@ -57,6 +61,17 @@ nlu:
     - "Correcto"
     - "ok"
     - "Sos humoristas?"
+    - si
+    - Daniel
+    - Danielgabinari@hotmail.com
+    - 2281682610
+    - danielgabinari@hotmail.com
+    - 1234
+    - daniel
+    - 12345
+    - Daiel
+    - pato@hotmail.com
+    - 123456789
 - intent: negar
   examples: |
     - "No"
@@ -76,47 +91,6 @@ nlu:
     - "contar chiste"
     - "Contame otro chiste"
     - Contame un chiste
-- intent: dar_telefono
-  examples: |
-    - "mi telefono es {telefono}"
-    - "telefono: {telefono}"
-    - "mi celular es {telefono}"
-    - "este es mi numero {telefono}"
-    - "{telefono}"
-    - "mi numero de telefono es [2281682610](telefono)"
-    - el numero de telefono es [0249548725](telefono)
-    - el numero es [0482569820](telefono)
-- intent: dar_nombre
-  examples: |
-    - "mi nombre es {nombre}"
-    - "soy {nombre}"
-    - "me dicen {nombre}"
-    - "llamame {nombre}"
-    - "{nombre}"
-    - "Me llamo [Daniel](nombre)"
-    - "me llamo [Lara](nombre)"
-    - "mi nombre es [fabian](nombre)"
-    - "mi nombre es fabian"
-    - "[Carlos](nombre)"
-    - "[maría](nombre)"
-    - "[juan](nombre)"
-    - "[Laura](nombre)"
-    - "[pedro](nombre)"
-    - "[Ana](nombre)"
-    - "[Javier](nombre)"
-    - "[susana](nombre)"
-    - "[Diego](nombre)"
-    - "[gabriela](nombre)"
-- intent: dar_correo_electronico
-  examples: |
-    - "mi correo es {correo_electronico}"
-    - "este es mi email {correo_electronico}"
-    - "email: {correo_electronico}"
-    - "correo: {correo_electronico}"
-    - "{correo_electronico}"
-    - "mi email es [danielgabinari@hotmail.com](correo_electronico)"
-    - [lara@gmail.com](correo_electronico)
-    - [fabian123@yahoo.com](correo_electronico)
 - intent: crear_cuenta
   examples: |
     - "Me gustaria registrarme en el sistema"
@@ -136,7 +110,10 @@ nlu:
     - Quisiera registrarme
     - quisiera registrarme
     - me quiero registrar
-
+    - Quisiera crear una cuenta
+    - necesito iniciar sesion
+    - quiero registrarme
+    - pato
 - intent: comprar_zapatos
   examples: |
     - "Me gustaría comprar [zapatillas](producto)"

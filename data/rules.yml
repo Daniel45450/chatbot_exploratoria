@@ -7,3 +7,21 @@ rules:
   - intent: despedir
   - action: utter_decir_adios
 
+
+- rule: Activate form_registro
+  steps:
+  - intent: crear_cuenta
+  - action: utter_inicio_crear_cuenta
+  - action: registro_form
+  - active_loop: registro_form
+
+- rule: Submit form_registro
+  condition:
+  - active_loop: registro_form
+  steps:
+  - action: registro_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: utter_datos_registro
