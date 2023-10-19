@@ -4,6 +4,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from swiplserver import PrologMQI
 from rasa_sdk.events import SlotSet, ActiveLoop
+
 class ValidateRegistroForm(FormValidationAction):
 
     def name(self) -> Text:

@@ -14,6 +14,7 @@ producto(p4, [zapatilla, calzado], [talle="38", color="rojo"], ["Zapatilla nike 
 producto(p5, [zapatilla, calzado, deportivo], [talle="30", color="blanco"], ["Zapatilla deportivas nike talle 30 blancas"], adidas, 5, 620).
 producto(p6, [zapatillas, calzado, formal], [talle="36", color="negro"], ["zapatos formales talle 36 de color negro"], gucci, 2, 750).
 producto(p13, [zapatilla, calzado], [talle="40", color="rojo"], ["Zapatilla nike talle 40 rojas"], nike, 10, 700).
+producto(p14, [calzado, zapatos], [talle="38", color="negro"], ["zapatos marca nike talle 38 negros"], nike, 10, 1000).
 
 % comida[tamano[liquidos=L, solidos=[grande, mediano, chico]]
 % capacidad=kilos o unidades
@@ -60,12 +61,38 @@ filtrar_precio_max(Precio, Productos):- findall(Producto, (
     producto(Producto, _, _, _, _, _, PrecioProducto), PrecioProducto =< Precio
 ), Productos).
 
+obtener_usuario(Nombre, Email, Telefono, Contrasena, Productoscomprados, Direccion) :- usuario(Nombre, Email, Telefono, Contrasena, Productoscomprados, Direccion).
+
 filtrar_por_marca(Marca, Productos):- findall(Producto, (producto(Producto, _, _, _, MarcaProducto, _, _), MarcaProducto = Marca), Productos).
+
+filtrarProductos(Categoria, Color, Material, Talle, Tamano, Gusto, Marca, Productos) :-
+    findall(Producto, (
+        producto(Producto, Categorias, Atributos, _, MarcaProducto, _, _),
+        (Categoria = [] ; member(Categoria, Categorias)),
+        (Color = [] ; member(color=Color, Atributos)),
+        (Material = [] ; member(material=Material, Atributos)),
+        (Talle = [] ; member(talle=Talle, Atributos)),
+        (Tamano = [] ; member(tamano=Tamano, Atributos)),
+        (Gusto = [] ; member(gusto=Gusto, Atributos)),
+        (Marca = [] ; Marca = MarcaProducto)
+    ), Productos).
+
+buscar_producto(Id, Producto):- producto(Id, Categoria, Atributos, Desc, Marca, Stock, Precio), Producto =  producto(Id, Categoria, Atributos, Desc, Marca, Stock, Precio).
+
 
 % usuarios (usuario(nombre, email, contrasena,telefono
 % [productoscomprados], direccion)).
 
-usuario("Daniel", "danielgabinari@hotmail.com", "2281682610", "1234", [], "MARTIN M").
+usuario("Daniel", "daniel@hotmail.com", "2281682520", "1234", [], "MARTIN M").
+usuario("Juan", "juan@gmail.com", "5555555555", "5678", [], "GONZALEZ J").
+usuario("Ana", "ana@yahoo.com", "9999999999", "9876", [], "RODRIGUEZ A").
+usuario("Luis", "luis@hotmail.com", "3333333333", "4321", [], "PEREZ L").
+usuario("María", "maria@gmail.com", "7777777777", "2468", [], "LOPEZ M").
+usuario("Carlos", "carlos@yahoo.com", "1111111111", "1357", [], "SANCHEZ C").
+usuario("Laura", "laura@hotmail.com", "6666666666", "8765", [], "GARCIA L").
+usuario("Sofía", "sofia@gmail.com", "2222222222", "9876", [], "MARTINEZ S").
+usuario("Pedro", "pedro@yahoo.com", "4444444444", "5432", [], "FERNANDEZ P").
+usuario("Elena", "elena@hotmail.com", "8888888888", "6789", [], "DIAZ E").
 
 existe_usuario(Email):- usuario(_,Email,_,_,_,_).
 

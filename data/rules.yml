@@ -25,3 +25,21 @@ rules:
     - requested_slot: null
   - action: utter_submit
   - action: utter_datos_registro
+
+- rule: Activate form_login
+  steps:
+  - intent: iniciar_sesion
+  - action: utter_iniciar_sesion
+  - action: login_form
+  - active_loop: login_form
+
+- rule: Submit form_login
+  condition:
+  - active_loop: login_form
+  steps:
+  - action: login_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: action_logear

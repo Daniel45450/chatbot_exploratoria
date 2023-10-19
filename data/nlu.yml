@@ -15,6 +15,7 @@ nlu:
     - "hola que tal"
     - "Hola"
     - hola
+    - Hola
 - intent: preguntar_animo
   examples: |
     - "Hola, ¿cómo estás?"
@@ -111,16 +112,26 @@ nlu:
     - quisiera registrarme
     - me quiero registrar
     - Quisiera crear una cuenta
-    - necesito iniciar sesion
     - quiero registrarme
-    - pato
+- intent: iniciar_sesion
+  examples: |
+    - "Quiero iniciar sesion"
+    - "iniciar sesion"
+    - "quiero logear"
+    - "Quiero entrar a mi cuenta"
+    - Quiero iniciar sesion
 - intent: comprar_zapatos
   examples: |
-    - "Me gustaría comprar [zapatillas](producto)"
-    - "Quiero comprar [zapatos](producto)"
-    - "Necesito unos [zapatos nuevos](producto)"
-    - "Estoy buscando [calzado](producto)"
-    - "¿Tienen [zapatillas deportivas](producto)?"
+    - Me gustaria comprar [zapatillas](categoria) de color [rojo](color) talle [40](talle)
+    - Quiero comprar [zapatillas](categoria) de color [negro](color) talle [28](talle)
+    - Quiero comprar [zapatos](categoria) de color [azules](color) talle [36](talle)
+    - Me gustaria comprar [zapatillas](categoria) de color [negro](color) talle [26](talle)
+    - quiero comprar [zapatillas](categoria) de color [rojo](color)
+    - quiero comprar [zapatillas](categoria) de marca [nike](marca)
+    - quiero comprar [zapatillas](categoria) de color [negro](color)
+    - quiero comprar [calzado](categoria) de color [negro](color)
+    - quiero comprar [zapatos](categoria) de color [rojo](color)
+    - quiero comprar [zapatos](categoria) de color [negro](color)
 - intent: comprar_camisetas
   examples: |
     - "Quiero una [camiseta](producto)"

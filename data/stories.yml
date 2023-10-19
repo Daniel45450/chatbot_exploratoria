@@ -25,15 +25,9 @@ stories:
   - slot_was_set:
     - requested_slot: nombre
   - slot_was_set:
-    - nombre: Daniel
-  - slot_was_set:
     - requested_slot: correo_electronico
   - slot_was_set:
-    - correo_electronico: danielgabinari@hotmail.com
-  - slot_was_set:
     - requested_slot: telefono
-  - slot_was_set:
-    - telefono: '2281682610'
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
@@ -45,121 +39,26 @@ stories:
   - action: utter_decir_adios
 
 
-- story: interactive_story_1
+- story: iniciar_sesion
   steps:
   - intent: saludar
   - action: utter_decir_hola
-  - intent: crear_cuenta
-  - action: utter_inicio_crear_cuenta
-  - action: registro_form
-  - active_loop: registro_form
-  - slot_was_set:
-    - requested_slot: nombre
-  - intent: confirmar
-  - slot_was_set:
-    - nombre: Daniel
-  - action: registro_form
-  - slot_was_set:
-    - nombre: Daniel
+  - intent: iniciar_sesion
+  - action: utter_iniciar_sesion
+  - action: login_form
+  - active_loop: login_form
   - slot_was_set:
     - requested_slot: correo_electronico
-  - intent: confirmar
-  - slot_was_set:
-    - correo_electronico: danielgabinari@hotmail.com
-  - action: registro_form
-  - slot_was_set:
-    - correo_electronico: danielgabinari@hotmail.com
-  - slot_was_set:
-    - requested_slot: telefono
-  - intent: confirmar
-  - slot_was_set:
-    - telefono: '2281682610'
-  - action: registro_form
-  - slot_was_set:
-    - telefono: '2281682610'
-  - slot_was_set:
-    - requested_slot: direccion_entrega
-  - intent: despedir
-  - slot_was_set:
-    - direccion_entrega: Martin M
-  - action: registro_form
-  - slot_was_set:
-    - direccion_entrega: Martin M
   - slot_was_set:
     - requested_slot: contrasena
-  - intent: confirmar
-  - slot_was_set:
-    - contrasena: '1234'
-  - action: registro_form
-  - slot_was_set:
-    - contrasena: '1234'
   - slot_was_set:
     - requested_slot: null
   - active_loop: null
   - action: utter_submit
-  - action: utter_datos_registro
-  - intent: confirmar
-  - action: action_registrar
-  - active_loop: registro_form
-  - action: action_registrar
-  - slot_was_set:
-    - nombre: null
-  - slot_was_set:
-    - correo_electronico: null
-  - slot_was_set:
-    - telefono: null
-  - slot_was_set:
-    - direccion_entrega: null
-  - slot_was_set:
-    - contrasena: null
-  - active_loop: registro_form
-  - action: registro_form
-  - slot_was_set:
-    - requested_slot: nombre
-  - intent: crear_cuenta
-  - slot_was_set:
-    - nombre: pato
-  - action: registro_form
-  - slot_was_set:
-    - nombre: pato
-  - slot_was_set:
-    - requested_slot: correo_electronico
-  - intent: confirmar
-  - slot_was_set:
-    - correo_electronico: pato@hotmail.com
-  - action: registro_form
-  - slot_was_set:
-    - correo_electronico: pato@hotmail.com
-  - slot_was_set:
-    - requested_slot: telefono
-  - intent: confirmar
-  - slot_was_set:
-    - telefono: '123456789'
-  - action: registro_form
-  - slot_was_set:
-    - telefono: '123456789'
-  - slot_was_set:
-    - requested_slot: direccion_entrega
-  - intent: despedir
-  - slot_was_set:
-    - direccion_entrega: San M
-  - action: registro_form
-  - slot_was_set:
-    - direccion_entrega: San M
-  - slot_was_set:
-    - requested_slot: contrasena
-  - intent: confirmar
-  - slot_was_set:
-    - contrasena: '12345'
-  - action: registro_form
-  - slot_was_set:
-    - contrasena: '12345'
-  - slot_was_set:
-    - requested_slot: null
-  - active_loop: null
-  - action: utter_submit
-  - action: utter_datos_registro
-  - intent: confirmar
-  - action: action_registrar
-  - intent: despedir
-  - action: utter_decir_adios
+  - action: action_logear
+
+
+- story: Comprar_Zapatillas
+  steps:
+  - intent: comprar_zapatos
+  - action: action_buscar_producto

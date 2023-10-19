@@ -1,11 +1,15 @@
 version: '3.1'
 actions:
+- utter_decir_hola
+- action_buscar_producto
+- action_logear
+- utter_submit
+- utter_iniciar_sesion
+- utter_bienvenida
 - utter_inicio_crear_cuenta
 - utter_datos_registro
 - action_registrar
-- utter_submit
 - utter_decir_adios
-- utter_decir_hola
 - action_respuesta_animo
 - utter_contar_chiste
 - utter_confirmacion
@@ -23,7 +27,41 @@ forms:
     - telefono
     - direccion_entrega
     - contrasena
+  login_form:
+    required_slots:
+    - correo_electronico
+    - contrasena
 slots:
+  precio:
+    type: any
+    mappings:
+    - type: custom
+      entity: precio
+  id:
+    type: any
+    mappings:
+    - type: custom
+      entity: id
+  marca:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: marca
+  color:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: color
+  talle:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: talle
+  categoria:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: categoria
   nombre:
     type: text
     influence_conversation: true
@@ -40,6 +78,8 @@ slots:
       conditions:
       - active_loop: registro_form
         requested_slot: correo_electronico
+      - active_loop: login_form
+        requested_slot: correo_electronico
   contrasena:
     type: text
     influence_conversation: true
@@ -47,6 +87,8 @@ slots:
     - type: from_text
       conditions:
       - active_loop: registro_form
+        requested_slot: contrasena
+      - active_loop: login_form
         requested_slot: contrasena
   telefono:
     type: text
@@ -64,12 +106,27 @@ slots:
       conditions:
       - active_loop: registro_form
         requested_slot: direccion_entrega
+  logged_in:
+    type: bool
+    initial_value: false
+    mappings:
+    - type: custom
+  carrito:
+    type: list
+    mappings:
+    - type: custom
+  productos:
+    type: list
+    mappings:
+    - type: custom
 intents:
 - Presentarse
+- comprar_zapatos
 - confirmar
 - contar_chiste
 - crear_cuenta
 - despedir
+- iniciar_sesion
 - negar
 - preguntar_animo
 - saludar
@@ -152,6 +209,17 @@ responses:
   - text: 'Nombre: {nombre}, Email: {correo_electronico}, Telefono: {telefono}, Direccion: {direccion_entrega} \nLos datos son correctos?'
   utter_submit:
   - text: Ok. Gracias!
+  utter_bienvenida:
+  - text: Bienvenido nuevamente {nombre}
+  - text: Hola de nuevo {nombre}
+  utter_iniciar_sesion:
+  - text: Por favor proporciona los datos para iniciar sesion
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+entities:
+- categoria
+- color
+- marca
+- talle
+- precio
