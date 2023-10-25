@@ -61,4 +61,4 @@ stories:
 - story: Comprar_Zapatillas
   steps:
   - intent: comprar_zapatos
-  - action: action_buscar_producto
+  - action: action_buscar_productos

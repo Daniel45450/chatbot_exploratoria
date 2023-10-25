@@ -1,7 +1,7 @@
 version: '3.1'
 actions:
+- action_buscar_productos
 - utter_decir_hola
-- action_buscar_producto
 - action_logear
 - utter_submit
 - utter_iniciar_sesion
@@ -52,11 +52,21 @@ slots:
     mappings:
     - type: from_entity
       entity: color
+  material:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: material
   talle:
     type: any
     mappings:
     - type: from_entity
       entity: talle
+  tipo:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: tipo
   categoria:
     type: any
     mappings:
@@ -223,3 +233,5 @@ entities:
 - marca
 - talle
 - precio
+- material
+- tipo

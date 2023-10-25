@@ -5,16 +5,16 @@
 %producto(id, [categorias], [atributos], [descripciones], marca,
 % cantidad_stock, precio)
 
-producto(p1, [ropa, camiseta],[talle="M", color="rojo"], ["Camiseta roja de talla M"], zara, 5, 200).
+producto(p1, [ropa, camiseta],[talle="M", color="rojo", tipo="corta", material="algodon"], ["Camiseta roja de talla M manga corta"], zara, 5, 200).
 producto(p2, [ropa, pantalon], [talle="32", color="azul"], ["Pantalon azul de talla 32"], kill, 8, 300).
 producto(p3, [ropa, vestido], [talle="S", color="negro"], ["Vestido negro de talla S"], dafiti, 6, 150).
 
 % calzado
-producto(p4, [zapatilla, calzado], [talle="38", color="rojo"], ["Zapatilla nike talle 38 rojas"], nike, 10, 600).
-producto(p5, [zapatilla, calzado, deportivo], [talle="30", color="blanco"], ["Zapatilla deportivas nike talle 30 blancas"], adidas, 5, 620).
-producto(p6, [zapatillas, calzado, formal], [talle="36", color="negro"], ["zapatos formales talle 36 de color negro"], gucci, 2, 750).
-producto(p13, [zapatilla, calzado], [talle="40", color="rojo"], ["Zapatilla nike talle 40 rojas"], nike, 10, 700).
-producto(p14, [calzado, zapatos], [talle="38", color="negro"], ["zapatos marca nike talle 38 negros"], nike, 10, 1000).
+producto(p4, [zapatilla, calzado, zapatillas], [talle="38", color="rojo", tipo="comunes"], ["Zapatilla nike talle 38 rojas"], nike, 10, 600).
+producto(p5, [zapatilla, calzado, deportivo, zapatillas], [talle="30", color="blanco", tipo="deportivas"], ["Zapatilla deportivas nike talle 30 blancas"], adidas, 5, 620).
+producto(p6, [zapatillas, calzado, zapatilla], [talle="36", color="negro", tipo="formal"], ["zapatos formales talle 36 de color negro"], gucci, 2, 750).
+producto(p13, [zapatilla, calzado, zapatillas], [talle="40", color="rojo", tipo="comunes"], ["Zapatilla nike talle 40 rojas"], nike, 10, 700).
+producto(p14, [calzado, zapatos, zapato], [talle="38", color="negro", tipo="comunes"], ["zapatos marca nike talle 38 negros"], nike, 10, 1000).
 
 % comida[tamano[liquidos=L, solidos=[grande, mediano, chico]]
 % capacidad=kilos o unidades

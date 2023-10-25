@@ -2,21 +2,11 @@ digraph  {
 0 [class="start active", fillcolor=green, fontsize=12, label=START, style=filled];
 "-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
 1 [class=active, fontsize=12, label=action_session_start];
-2 [class=active, fontsize=12, label=utter_decir_hola];
-3 [class=active, fontsize=12, label=action_unlikely_intent];
-4 [class=active, fontsize=12, label=action_buscar_producto];
-20 [class="intent dashed active", label="  ?  ", shape=rect];
-21 [class="intent active", fillcolor=lightblue, label="/saludar", shape=rect, style=filled];
-22 [class="intent active", fillcolor=lightblue, label="/comprar_zapatos", shape=rect, style=filled];
-23 [class="intent active", fillcolor=lightblue, label="/comprar_zapatos", shape=rect, style=filled];
+2 [class=active, fontsize=12, label=action_buscar_productos];
+37 [class="intent dashed active", label="  ?  ", shape=rect];
 0 -> "-1"  [class="", key=NONE, label=""];
 0 -> 1  [class=active, key=NONE, label=""];
-1 -> 21  [class=active, key=0];
-2 -> 22  [class=active, key=0];
-3 -> 4  [class=active, key=NONE, label=""];
-4 -> 20  [class=active, key=NONE, label=""];
-4 -> 23  [class=active, key=0];
-21 -> 2  [class=active, key=0];
-22 -> 3  [class=active, key=0];
-23 -> 4  [class=active, key=0];
+1 -> 2  [class=active, key=NONE, label=""];
+2 -> 2  [class=active, key=NONE, label=""];
+2 -> 37  [class=active, key=NONE, label=""];
 }
