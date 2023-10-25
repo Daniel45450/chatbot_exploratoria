@@ -6,11 +6,15 @@ from swiplserver import PrologMQI
 from actions.consultarPL import consultarPL
 from rasa_sdk.events import SlotSet
 
+import random
+
 class AccionBuscarProductos(Action):
     def name(self):
         return "action_buscar_productos"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain):
+
+        dispatcher.utter_message(f"Buscando productos... por favor espere")
         categoria = tracker.get_slot("categoria")
         color = tracker.get_slot("color")
         talle = tracker.get_slot("talle")
@@ -62,8 +66,7 @@ class AccionBuscarProductos(Action):
                         talle = atributos.get('talle')
                         tipo = atributos.get('tipo')
                         
-                        zapato = Zapato(id, marca, talle, color, categorias, tipo)
-                        
+                        zapato = Zapato(id, marca, talle, color, categorias, tipo, descripciones)
                         lista_productos.append(zapato.to_dict())  # Añade el producto a la lista de productos
                 if(ultimo_intent == "comprar_camisetas"):
                         color = atributos.get('color')
@@ -71,12 +74,20 @@ class AccionBuscarProductos(Action):
                         tipo = atributos.get('tipo')
                         material = atributos.get('material')
                         
-                        camiseta = Camiseta(id, marca, talle, color, categorias, material, tipo)    
+                        camiseta = Camiseta(id, marca, talle, color, categorias, material, tipo, descripciones)    
                         lista_productos.append(camiseta.to_dict())  # Añade el producto a la lista de productos                
 
+        if not lista_productos:
+            dispatcher.utter_message('No hay productos que coincidan con lo solicitado')
+        else:
+            dispatcher.utter_message('Estos son algunos productos que coinciden')
+            for producto in lista_productos:
+                i = random.randint(0, len(producto.get('descripciones'))-1)
+                dispatcher.utter_message(f'{producto.get("descripciones")[i]}\n')
 
-        print(str(lista_productos))
-
-        dispatcher.utter_message(f"Buscando producto: Categoria - {categoria}, Color - {color}, Talle - {talle}")
-
-        return [SlotSet('productos', lista_productos)]
+        listado_resetear = ['categoria','color', 'material', 'talle', 'tamano', 'gusto', 'marca']
+        listado_setear = []
+        for parametro in listado_resetear:
+            if parametro is not None:
+                listado_setear.append(SlotSet(parametro, None))
+        return listado_setear

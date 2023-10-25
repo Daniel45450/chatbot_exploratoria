@@ -6,10 +6,12 @@
 % cantidad_stock, precio)
 
 producto(p1, [ropa, camiseta],[talle="M", color="rojo", tipo="corta", material="algodon"], ["Camiseta roja de talla M manga corta"], zara, 5, 200).
+
 producto(p2, [ropa, pantalon], [talle="32", color="azul"], ["Pantalon azul de talla 32"], kill, 8, 300).
+
 producto(p3, [ropa, vestido], [talle="S", color="negro"], ["Vestido negro de talla S"], dafiti, 6, 150).
 
-% calzado
+%zapatillas
 producto(p4, [zapatilla, calzado, zapatillas], [talle="38", color="rojo", tipo="comunes"], ["Zapatilla nike talle 38 rojas"], nike, 10, 600).
 producto(p5, [zapatilla, calzado, deportivo, zapatillas], [talle="30", color="blanco", tipo="deportivas"], ["Zapatilla deportivas nike talle 30 blancas"], adidas, 5, 620).
 producto(p6, [zapatillas, calzado, zapatilla], [talle="36", color="negro", tipo="formal"], ["zapatos formales talle 36 de color negro"], gucci, 2, 750).

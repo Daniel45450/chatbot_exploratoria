@@ -132,6 +132,7 @@ slots:
 intents:
 - Presentarse
 - comprar_zapatos
+- comprar_camisetas
 - confirmar
 - contar_chiste
 - crear_cuenta

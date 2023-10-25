@@ -62,3 +62,8 @@ stories:
   steps:
   - intent: comprar_zapatos
   - action: action_buscar_productos
+
+- story: Comprar_Camisetas
+  steps:
+  - intent: comprar_camisetas
+  - action: action_buscar_productos

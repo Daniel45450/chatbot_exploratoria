@@ -1,8 +1,9 @@
 class Producto:
-    def __init__(self, id, marca, categorias):
+    def __init__(self, id, marca, categorias, descripciones):
         self._id = id
         self._marca = marca
         self._categorias = categorias  # Lista de categorías
+        self._descripciones = descripciones
 
     def get_id(self):
         return self._id
@@ -13,12 +14,27 @@ class Producto:
     def get_categorias(self):
         return self._categorias
     
+    def get_descripciones(self):
+        return self._descripciones
+    
+    def set_descripcion(self, nuevas_descripciones):
+        self._descripciones = nuevas_descripciones
+
+    def to_dict(self):
+        return {
+            "id": self._id,
+            "marca": self._marca,
+            "categorias": self._categorias,
+            "descripciones": self._descripciones
+        }
+
+    
     def __str__(self):
         return f"ID: {self._id}, Marca: {self._marca}, Categorías: {', '.join(self._categorias)}"
     
 class Zapato(Producto):
-    def __init__(self, id, marca, talle, color, categorias, tipo):
-        super().__init__(id, marca, categorias)
+    def __init__(self, id, marca, talle, color, categorias, tipo, descripciones):
+        super().__init__(id, marca, categorias, descripciones)
         self._talle = talle
         self._color = color
         self._tipo = tipo
@@ -45,18 +61,17 @@ class Zapato(Producto):
         return f"{super().__str__()}, Talle: {self._talle}, Color: {self._color}, Tipo: {self._tipo}"
     
     def to_dict(self):
-        return {
-            "id": self._id,
-            "marca": self._marca,
+        zapato_dict = super().to_dict()  # Hereda los valores del producto base
+        zapato_dict.update({
             "talle": self._talle,
             "color": self._color,
-            "categorias": self._categorias,
             "tipo": self._tipo
-        }
+        })
+        return zapato_dict
 
 class Camiseta(Producto):
-    def __init__(self, id, marca, talle, color, categorias, material, tipo):
-        super().__init__(id, marca, categorias)
+    def __init__(self, id, marca, talle, color, categorias, material, tipo, descripciones):
+        super().__init__(id, marca, categorias, descripciones)
         self._material = material
         self._talle = talle
         self._tipo = tipo
@@ -87,14 +102,14 @@ class Camiseta(Producto):
         self._color = nuevo_color
 
     def to_dict(self):
-        return {
-            "id": self._id,
-            "marca": self._marca,
+        camiseta_dict = super().to_dict()  # Hereda los valores del producto base
+        camiseta_dict.update({
             "talle": self._talle,
             "color": self._color,
-            "categorias": self._categorias,
-            "material": self._material
-        }
+            "material": self._material,
+            "tipo": self._tipo
+        })
+        return camiseta_dict
     
     def __str__(self):
         return f"{super().__str__()}, Material: {self._material}"
