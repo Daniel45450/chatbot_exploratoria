@@ -67,3 +67,35 @@ stories:
   steps:
   - intent: comprar_camisetas
   - action: action_buscar_productos
+
+- story: Comprar_Vestidos
+  steps:
+  - intent: comprar_vestidos
+  - action: action_buscar_productos
+
+- story: Comprar_Alimento_Liquido
+  steps:
+  - intent: comprar_alimento_liquido
+  - action: action_buscar_productos
+
+- story: Comprar_Snacks
+  steps:
+  - intent: comprar_snacks
+  - action: action_buscar_productos
+
+- story: Comprar_Frutas
+  steps:
+  - intent: comprar_frutas
+  - action: action_buscar_productos
+
+- story: Comprar_Joyeria
+  steps:
+  - intent: comprar_joyeria
+  - action: action_buscar_productos
+
+- story: Comprar_Pantalones
+  steps:
+  - intent: comprar_pantalones
+  - action: action_buscar_productos
+
+

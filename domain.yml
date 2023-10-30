@@ -2,6 +2,8 @@ version: '3.1'
 actions:
 - action_buscar_productos
 - utter_decir_hola
+- utter_not_logged_in
+- action_agregar_producto
 - action_logear
 - utter_submit
 - utter_iniciar_sesion
@@ -37,10 +39,20 @@ slots:
     mappings:
     - type: custom
       entity: precio
-  id:
+  gusto:
     type: any
     mappings:
     - type: custom
+      entity: gusto
+  peso:
+    type: any
+    mappings:
+    - type: custom
+      entity: gusto
+  id:
+    type: any
+    mappings:
+    - type: from_entity
       entity: id
   marca:
     type: any
@@ -131,16 +143,25 @@ slots:
     - type: custom
 intents:
 - Presentarse
-- comprar_zapatos
+- agregar_producto_carrito
+- comprar_alimento_liquido
 - comprar_camisetas
+- comprar_frutas
+- comprar_joyeria
+- comprar_pantalones
+- comprar_snacks
+- comprar_vestidos
+- comprar_zapatos
 - confirmar
 - contar_chiste
 - crear_cuenta
 - despedir
+- eliminar_producto_carrito
 - iniciar_sesion
 - negar
 - preguntar_animo
 - saludar
+- ver_carrito
 responses:
   utter_info_registro:
   - text: 'Esta es la informacion que se registro nombre de usuario: {nombre} email: {correo_electronico} telefono: {telefono}.'
@@ -225,14 +246,19 @@ responses:
   - text: Hola de nuevo {nombre}
   utter_iniciar_sesion:
   - text: Por favor proporciona los datos para iniciar sesion
+  utter_not_logged_in:
+  - text: Necesitas iniciar sesion para continuar
+  - text: Debes iniciar sesion para continuar
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 entities:
+- id
 - categoria
+- tipo
 - color
 - marca
 - talle
 - precio
 - material
-- tipo
+- peso

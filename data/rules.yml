@@ -7,6 +7,21 @@ rules:
   - intent: despedir
   - action: utter_decir_adios
 
+- rule: Agregar producto al carrito si está logueado
+  condition:
+  - slot_was_set:
+    - logged_in: True
+  steps:
+  - intent: agregar_producto_carrito
+  - action: action_agregar_producto
+
+- rule: Agregar producto al carrito si no está logueado
+  condition:
+  - slot_was_set:
+    - logged_in: False
+  steps:
+  - intent: agregar_producto_carrito
+  - action: utter_not_logged_in
 
 - rule: Activate form_registro
   steps:

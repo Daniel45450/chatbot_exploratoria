@@ -94,6 +94,8 @@ nlu:
     - Contame un chiste
 - intent: crear_cuenta
   examples: |
+    - "No tengo cuenta quiero iniciar sesion"
+    - "No tengo cuenta quiero crear  una"
     - "Me gustaria registrarme en el sistema"
     - "Como me registro para realizar compras?"
     - "Me puedo crear una cuenta?"
@@ -134,11 +136,77 @@ nlu:
     - quiero comprar [zapatos](categoria) de color [negro](color)
 - intent: comprar_camisetas
   examples: |
-    - "Quiero una [camiseta](producto)"
-    - "Me gustaría comprar [ropa](producto)"
-    - "¿Tienen [camisetas de algodón](producto)?"
+    - "Quiero una [camiseta](categoria)"
+    - "Me gustaría comprar [ropa](categoria)"
+    - "¿Tienen [camisetas](categoria) de [algodon](material)?"
 - intent: comprar_pantalones
   examples: |
-    - "Necesito [pantalones](producto)"
-    - "Estoy buscando [jeans](producto)"
-    - "¿Tienen [pantalones cortos](producto)?"
+    - "Quiero comprar [pantalones](categoria) [cortos]{"entity": "tipo", "value": "corto"}"
+    - "Necesito [pantalones](categoria)"
+    - "Estoy buscando [jeans](categoria) talle [40](talle)"
+    - "Estoy buscando [jeans](categoria) de color [negro](negro) talle [36](talle)"
+    - "¿Tienen [pantalones](categoria) [cortos]{"entity": "tipo", "value": "corto"}?"
+    - "venden algun [pantalon](categoria) [largo](tipo) talle [36](talle)?"
+    - quiero comprar [pantalones](categoria) [cortos]{"entity": "tipo", "value": "corto"}
+    - quiero comprar [pantalones](categoria) [largos]{"entity": "tipo", "value": "largo"}
+    - quiero comprar [pantalones](categoria) [largos]{"entity": "tipo", "value": "largo"}
+- intent: comprar_vestidos
+  examples: |
+    - "Tienen algun [vestido](categoria) de color [negro](color)"
+    - "Estoy buscando un [vestido](categoria) talle [S](talle)"
+    - "Quiero comprar un [vestido](categoria) talle [M](talle) de color [rojo](rojo) de [seda](material)"
+    - "Que [vestidos](categoria) de marca [dafiti](marca) hay?"
+- intent: comprar_alimento_liquido
+  examples: |
+    - "Quiero comprar [leche](categoria)"
+    - "hay [leche](categoria) [light](tipo)?"
+    - "Tenes [leche](categoria) [entera](tipo)?"
+- intent: comprar_snacks
+  examples: |
+    - "Tengo ganas de comer un [snack](categoria) [salado](gusto)"
+    - "Tenes [doritos](categoria)?"
+    - "Tengo ganas de comer algo [salado](gusto)"
+    - "Quiero comer comer algo [dulce](gusto)"
+- intent: comprar_frutas
+  examples: |
+    - "Quiero comprar [bananas](categoria)"
+    - "tengo ganas de comer [bananas](categoria)"
+    - "Hay [manzanas](categoria)"?
+    - "quiero comprar [manzanas](categoria)"
+- intent: comprar_joyeria
+  examples: |
+    - "Quiero comprar un [collar](categoria)"
+    - "Tenes algun [collar](categoria) de [diamante](material)"
+    - "Tenes algun [collar](categoria) de [plata](material)"
+    - "Vendes algun [anillo](categoria) de [diamante](categoria)"
+    - "Quiero ver las [pulseras](categoria) que tenes"
+    - "tenes alguna [pulsera](categoria) de [diamante](material)?"
+- intent: agregar_producto_carrito
+  examples: |
+    - "Agregame el producto [p20](id) al carrito"
+    - "agrega el producto [p15](id) al carrito"
+    - "Pone el producto [p3](id) al carrito"
+    - "Quiero agregar el producto [p8](id) al carrito"
+    - agregame el producto [p2](id)
+    - agregame el producto [p3](id) al carrito
+    - agregame el producto [p4](id) al carrito
+- intent: ver_carrito
+  examples: |
+    - "Mostrame el contenido del carrito"
+    - "Quiero ver que tengo en el carrito"
+    - "Mostrame el carrito"
+    - "Que productos agrege al carrito?"
+    - "Recordame que guarde en el carrito"
+    - "Cuanto debo pagar?"
+- intent: eliminar_producto_carrito
+  examples: |
+    - "Elimina el producto [id](id) del carrito"
+    - "elimina el producto [id](id)"
+    - "No quiero comprar el producto [id](id)"
+    - "Me arrepenti no quiero comprar el producto [id](id)"
+- synonym: corto
+  examples: |
+    - cortos
+- synonym: largo
+  examples: |
+    - largos

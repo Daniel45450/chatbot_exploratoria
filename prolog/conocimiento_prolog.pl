@@ -6,13 +6,17 @@
 % cantidad_stock, precio)
 
 %camisetas
-producto(p1, [ropa, camiseta],[talle="M", color="rojo", tipo="corta", material="algodon"], ["Camiseta roja de talla M manga corta"], zara, 5, 200).
+producto(p1, [ropa, camiseta, camisetas],[talle="M", color="rojo", tipo="corta", material="algodon"], ["Camiseta roja de talla M manga corta"], zara, 5, 200).
 
 %pantalones
-producto(p2, [ropa, pantalon], [talle="32", color="azul", tipo="largo"], ["Pantalon azul de talla 32"], kill, 8, 300).
+producto(p2, [ropa, pantalon, pantalones], [talle="32", color="azul", tipo="largo", material="denim"], ["Pantalon azul de talla 32"], kill, 8, 300).
+producto(p20, [ropa, pantalon, pantalones, jeans, jean], [talle="40", color="azul", tipo="largo", material="denim"], ["Jean de color azul talle 40"], kill, 2, 250).
+producto(p19, [ropa, pantalon, pantalones], [talle="36", color="celeste", tipo="corto", material="seda"], ["Pantalon corto celeste talle 36"], kill, 2, 350).
+
 
 %vestidos
-producto(p3, [ropa, vestido], [talle="S", color="negro"], ["Vestido negro de talla S"], dafiti, 6, 150).
+producto(p3, [ropa, vestido, vestidos], [talle="S", color="negro", material="algodon"], ["Vestido negro de talla S"], dafiti, 6, 150).
+producto(p16, [ropa, vestido, vestidos], [talle="M", color="rojo", material="seda"], ["Vestido rojo de talla M"], rinu, 6, 200).
 
 %zapatillas
 producto(p4, [zapatilla, calzado, zapatillas], [talle="38", color="rojo", tipo="comunes", material="Malla"], ["Zapatilla nike talle 38 rojas"], nike, 10, 600).
@@ -25,26 +29,31 @@ producto(p14, [calzado, zapatos, zapato], [talle="38", color="negro", tipo="comu
 % capacidad=kilos o unidades
 
 %alimentos_liquidos
-producto(p7, [alimentos, lacteos], [volumen="1", tipo="entera", vencimiento="26/10/2024"], ["Leche entera de 1 litro"], serenisima, 10, 80).
-producto(p15, [alimentos, lacteos], [volumen="1", tipo="light", vencimiento="30/08/2024"], ["Leche light de 1 litro"], don_atilo, 6, 32).
+producto(p7, [alimentos, lacteos, leche], [volumen="1", tipo="entera", vencimiento="26/10/2024"], ["Leche entera de 1 litro"], serenisima, 10, 80).
+producto(p15, [alimentos, lacteos, leche], [volumen="1", tipo="light", vencimiento="30/08/2024"], ["Leche light de 1 litro"], don_atilo, 6, 32).
 
 %alimentos_frutas
-producto(p8, [alimentos, frutas], [peso="1"], ["Manzana", "Manzana fresca", "Manzana fresca de temporada"], gala, 5, 500).
+producto(p8, [alimentos, frutas, manzana, manzanas], [peso="1"], ["Manzana", "Manzana fresca", "Manzana fresca de temporada"], gala, 5, 500).
+producto(p19, [alimentos, frutas, banana, bananas], [peso="1"], ["Bananas", "Bananas fresca", "Bananas de temporada"], gala, 7, 150).
 
 %%alimentos_snacks
-producto(p9, [alimentos, snacks], [peso="0.25", gusto="salado"], ["Chips de papas", "Chips de papas salados", "Bolsa de chips de papas salados"], lays, 9, 20).
+producto(p9, [alimentos, snacks, snack], [peso="0.25", gusto="salado"], ["Chips de papas", "Chips de papas salados", "Bolsa de chips de papas salados"], lays, 9, 20).
+producto(p17, [alimentos, snacks, doritos, dorito], [peso="0.25", gusto="salado"], ["Doritos salados 0.25 grs", "Bolsa de doritos salados"], doritos, 3, 15).
+producto(p18, [alimentos, snacks], [peso="0.25", gusto="dulce"], ["Biscochitos dulces", "don satur dulces"], don_satur, 3, 15).
 
 % joyer�a
-producto(p10, [joyas, collares], [material="plata"], ["Collar de plata", "Collar de plata con colgante de coraz�n", "Collar de plata con colgante de coraz�n", "Joyer�a Fina"], boucheron, 3, 150).
-producto(p11, [joyas, anillos], [material="diamante"], ["Anillo de compromiso", "Anillo de compromiso con diamante", "Anillo de compromiso con diamante de corte brillante"], avon, 2, 300).
-producto(p12, [joyas, pulseras], [material="oro"], ["Pulsera de oro", "Pulsera de oro con eslabones entrelazados", "Pulsera de oro con eslabones entrelazados"], cartier, 1, 400).
+producto(p10, [joyas, collares, collar], [material="plata"], ["Collar de plata", "Collar de plata con colgante de corazon", "Collar de plata con colgante de corazon", "Joyeria Fina"], boucheron, 3, 150).
+producto(p11, [joyas, anillos, anillo], [material="diamante"], ["Anillo de compromiso", "Anillo de compromiso con diamante", "Anillo de compromiso con diamante de corte brillante"], avon, 2, 300).
+producto(p12, [joyas, pulseras, pulsera], [material="oro"], ["Pulsera de oro", "Pulsera de oro con eslabones entrelazados", "Pulsera de oro con eslabones entrelazados"], cartier, 1, 400).
 
 % local(nombre, [productos], horario)
 
-local("Tienda de Ropa",[p1,p2,p3],"13:00","18:00").
+local("Tienda de Ropa",[p1,p2,p3,p19,p20],"13:00","18:00").
 local("Tienda de Calzado",[p4,p5,p6,p13,p14],"08:00","17:00").
-local("Tienda de Comida",[p7,p8,p9,p15],"12:00","23:00").
+local("Tienda de Comida",[p7,p8,p9,p15,p17,p18],"12:00","23:00").
+local("Tienda de frutas",[p19],"12:00","23:00").
 local("Tienda de joyeria",[p10,p11,p12],"08:00","13:00").
+local("Tienda de vestidos",[p16],"08:00","13:00").
 
 buscar_tienda_producto(Id, Tienda):- local(Tienda, Productos, _, _), member(Id, Productos).
 
@@ -76,16 +85,17 @@ obtener_usuario(Nombre, Email, Telefono, Contrasena, Productoscomprados, Direcci
 
 filtrar_por_marca(Marca, Productos):- findall(Producto, (producto(Producto, _, _, _, MarcaProducto, _, _), MarcaProducto = Marca), Productos).
 
-filtrarProductos(Categoria, Color, Material, Talle, Tamano, Gusto, Marca, Productos) :-
+filtrarProductos(Categoria, Color, Material, Talle, Peso, Gusto, Marca, Tipo, Productos) :-
     findall(Producto, (
         producto(Producto, Categorias, Atributos, _, MarcaProducto, _, _),
         (Categoria = [] ; member(Categoria, Categorias)),
         (Color = [] ; member(color=Color, Atributos)),
         (Material = [] ; member(material=Material, Atributos)),
         (Talle = [] ; member(talle=Talle, Atributos)),
-        (Tamano = [] ; member(tamano=Tamano, Atributos)),
+        (Peso = [] ; member(peso=Peso, Atributos)),
         (Gusto = [] ; member(gusto=Gusto, Atributos)),
-        (Marca = [] ; Marca = MarcaProducto)
+        (Marca = [] ; Marca = MarcaProducto),
+        (Tipo = []; member(tipo=Tipo, Atributos))
     ), Productos).
 
 buscar_producto(Id, Producto):- producto(Id, Categoria, Atributos, Desc, Marca, Stock, Precio), Producto =  producto(Id, Categoria, Atributos, Desc, Marca, Stock, Precio).

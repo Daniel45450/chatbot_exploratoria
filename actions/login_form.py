@@ -4,6 +4,8 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 from swiplserver import PrologMQI
 from rasa_sdk.events import SlotSet, ActiveLoop
+from actions.consultarPL import *
+from actions.config import *
 
 class ValidateLoginForm(FormValidationAction):
 
@@ -35,27 +37,22 @@ class Logear(Action):
     def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        consulta_db = "consult('E:/Tercer año/Exploratoria/Rasa/Primer_proyecto/prolog/conocimiento_prolog.pl')"
-
         correo_electronico = tracker.get_slot('correo_electronico')
         contrasena = tracker.get_slot('contrasena')
 
         consulta_query = f'obtener_usuario(Nombre, "{correo_electronico}", Telefono, "{contrasena}", ProductosComprados, Direccion)'
 
+        print(consulta_query)
+        response = consultarPL(port, path_db, consulta_query)
 
-        with PrologMQI(port=8000) as mqi:
-            with mqi.create_thread() as prolog_thread:
-                prolog_thread.query(consulta_db)
-                response = prolog_thread.query(consulta_query)
-                print(str(response), type(response))
 
-                if response == False:
-                    dispatcher.utter_message(text= "Error: Este usuario no esta en nuestro sistema")
-                    return [SlotSet("correo_electronico", None), SlotSet("contrasena", None)]
-                if response == True: 
-                    nombre = response[0]['Nombre']
-                    telefono = response[0]['Telefono']
-                    productos_comprados = response[0]['ProductoComprados']
-                    direccion = response[0]['Direccion']
-                    dispatcher.utter_message(text="Logeado con exito")
-                    return [SlotSet("nombre", nombre), SlotSet("correo_electronico", correo_electronico), SlotSet("telefono", telefono), SlotSet("direccion_entrega", direccion), SlotSet("contrasena", contrasena), SlotSet("logged_in", True)] 
+        if not response:
+            dispatcher.utter_message(f"Error: Este usuario no esta en nuestro sistema")
+            return [SlotSet("correo_electronico", None), SlotSet("contrasena", None)]
+        else: 
+            nombre = response[0].get('Nombre')
+            telefono = response[0].get('Telefono')
+            productos_comprados = response[0].get('ProductosComprados')
+            direccion = response[0].get('Direccion')
+            dispatcher.utter_message(f"Logeado con exito")
+            return [SlotSet("nombre", nombre), SlotSet("correo_electronico", correo_electronico), SlotSet("telefono", telefono), SlotSet("direccion_entrega", direccion), SlotSet("contrasena", contrasena), SlotSet("logged_in", True)] 
