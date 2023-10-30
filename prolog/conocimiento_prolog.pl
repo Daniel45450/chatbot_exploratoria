@@ -5,15 +5,18 @@
 %producto(id, [categorias], [atributos], [descripciones], marca,
 % cantidad_stock, precio)
 
+%camisetas
 producto(p1, [ropa, camiseta],[talle="M", color="rojo", tipo="corta", material="algodon"], ["Camiseta roja de talla M manga corta"], zara, 5, 200).
 
-producto(p2, [ropa, pantalon], [talle="32", color="azul"], ["Pantalon azul de talla 32"], kill, 8, 300).
+%pantalones
+producto(p2, [ropa, pantalon], [talle="32", color="azul", tipo="largo"], ["Pantalon azul de talla 32"], kill, 8, 300).
 
+%vestidos
 producto(p3, [ropa, vestido], [talle="S", color="negro"], ["Vestido negro de talla S"], dafiti, 6, 150).
 
 %zapatillas
-producto(p4, [zapatilla, calzado, zapatillas], [talle="38", color="rojo", tipo="comunes"], ["Zapatilla nike talle 38 rojas"], nike, 10, 600).
-producto(p5, [zapatilla, calzado, deportivo, zapatillas], [talle="30", color="blanco", tipo="deportivas"], ["Zapatilla deportivas nike talle 30 blancas"], adidas, 5, 620).
+producto(p4, [zapatilla, calzado, zapatillas], [talle="38", color="rojo", tipo="comunes", material="Malla"], ["Zapatilla nike talle 38 rojas"], nike, 10, 600).
+producto(p5, [zapatilla, calzado, deportivo, zapatillas], [talle="30", color="blanco", tipo="deportivas", material="Malla"], ["Zapatilla deportivas nike talle 30 blancas"], adidas, 5, 620).
 producto(p6, [zapatillas, calzado, zapatilla], [talle="36", color="negro", tipo="formal"], ["zapatos formales talle 36 de color negro"], gucci, 2, 750).
 producto(p13, [zapatilla, calzado, zapatillas], [talle="40", color="rojo", tipo="comunes"], ["Zapatilla nike talle 40 rojas"], nike, 10, 700).
 producto(p14, [calzado, zapatos, zapato], [talle="38", color="negro", tipo="comunes"], ["zapatos marca nike talle 38 negros"], nike, 10, 1000).
@@ -21,9 +24,15 @@ producto(p14, [calzado, zapatos, zapato], [talle="38", color="negro", tipo="comu
 % comida[tamano[liquidos=L, solidos=[grande, mediano, chico]]
 % capacidad=kilos o unidades
 
-producto(p7, [alimentos, lacteos], [tamano="1"], ["Leche entera de 1 litro"], serenisima, 10, 80).
-producto(p8, [alimentos, frutas], [tamano="mediano"], ["Manzana", "Manzana fresca", "Manzana fresca de temporada"], gala, 5, 500).
-producto(p9, [alimentos, snacks], [tamano="0.25", gusto=salado], ["Chips de papas", "Chips de papas salados", "Bolsa de chips de papas salados"], lays, 9, 20).
+%alimentos_liquidos
+producto(p7, [alimentos, lacteos], [volumen="1", tipo="entera", vencimiento="26/10/2024"], ["Leche entera de 1 litro"], serenisima, 10, 80).
+producto(p15, [alimentos, lacteos], [volumen="1", tipo="light", vencimiento="30/08/2024"], ["Leche light de 1 litro"], don_atilo, 6, 32).
+
+%alimentos_frutas
+producto(p8, [alimentos, frutas], [peso="1"], ["Manzana", "Manzana fresca", "Manzana fresca de temporada"], gala, 5, 500).
+
+%%alimentos_snacks
+producto(p9, [alimentos, snacks], [peso="0.25", gusto="salado"], ["Chips de papas", "Chips de papas salados", "Bolsa de chips de papas salados"], lays, 9, 20).
 
 % joyer�a
 producto(p10, [joyas, collares], [material="plata"], ["Collar de plata", "Collar de plata con colgante de coraz�n", "Collar de plata con colgante de coraz�n", "Joyer�a Fina"], boucheron, 3, 150).
@@ -32,13 +41,13 @@ producto(p12, [joyas, pulseras], [material="oro"], ["Pulsera de oro", "Pulsera d
 
 % local(nombre, [productos], horario)
 
-local("Tienda de Ropa",[p1,p2,p3],"13:00-18:00").
-local("Tienda de Calzado",[p4,p5,p6,p13],"08:00-17:00").
-local("Tienda de Comida",[p7,p8,p9],"12:00-23:00").
-local("Tienda de joyeria",[p10,p11,p12],"08:00-13:00").
+local("Tienda de Ropa",[p1,p2,p3],"13:00","18:00").
+local("Tienda de Calzado",[p4,p5,p6,p13,p14],"08:00","17:00").
+local("Tienda de Comida",[p7,p8,p9,p15],"12:00","23:00").
+local("Tienda de joyeria",[p10,p11,p12],"08:00","13:00").
 
-esta_en_stock(Producto, Tienda, CantidadNecesaria) :-
-    local(Tienda, Productos, _), member(Producto, Productos), producto(Producto, _, _, _, _, Cantidad_Stock,_), Cantidad_Stock >= CantidadNecesaria.
+buscar_tienda_producto(Id, Tienda):- local(Tienda, Productos, _, _), member(Id, Productos).
+
 
 filtrar_por_color(Color, Productos) :- findall(Producto, (
     producto(Producto, _, Atributos, _, _, _, _),
