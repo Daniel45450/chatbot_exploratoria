@@ -12,9 +12,9 @@ class AccionRespuestaAnimo(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        opciones_respuesta = [f"utter_animo_bueno", f"utter_animo_malo"]
+        opciones_respuesta = ["utter_animo_bueno", "utter_animo_malo"]
         respuesta_seleccionada = random.choice(opciones_respuesta)
 
-        dispatcher.utter_message(respuesta_seleccionada)
+        dispatcher.utter_message(response = respuesta_seleccionada)
 
         return []

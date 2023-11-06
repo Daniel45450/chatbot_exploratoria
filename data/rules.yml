@@ -23,6 +23,11 @@ rules:
   - intent: agregar_producto_carrito
   - action: utter_not_logged_in
 
+- rule: Ver carrito
+  steps:
+  - intent: ver_carrito
+  - action: action_ver_carrito
+
 - rule: Activate form_registro
   steps:
   - intent: crear_cuenta

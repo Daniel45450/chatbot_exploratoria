@@ -13,7 +13,6 @@ stories:
   - intent: despedir
   - action: utter_decir_adios
 
-
 - story: Creacion_cuenta
   steps:
   - intent: saludar
@@ -38,7 +37,6 @@ stories:
   - intent: despedir
   - action: utter_decir_adios
 
-
 - story: iniciar_sesion
   steps:
   - intent: saludar
@@ -57,45 +55,89 @@ stories:
   - action: utter_submit
   - action: action_logear
 
-
-- story: Comprar_Zapatillas
+- story: buscar Zapatillas
   steps:
-  - intent: comprar_zapatos
+  - intent: buscar_zapatos
   - action: action_buscar_productos
 
-- story: Comprar_Camisetas
+- story: buscar Camisetas
   steps:
-  - intent: comprar_camisetas
+  - intent: buscar_camisetas
   - action: action_buscar_productos
 
-- story: Comprar_Vestidos
+- story: buscar Vestidos
   steps:
-  - intent: comprar_vestidos
+  - intent: buscar_vestidos
   - action: action_buscar_productos
 
-- story: Comprar_Alimento_Liquido
+- story: buscar Alimento_Liquido
   steps:
-  - intent: comprar_alimento_liquido
+  - intent: buscar_alimento_liquido
   - action: action_buscar_productos
 
-- story: Comprar_Snacks
+- story: buscar_Snacks
   steps:
-  - intent: comprar_snacks
+  - intent: buscar_snacks
   - action: action_buscar_productos
 
-- story: Comprar_Frutas
+- story: buscar_Frutas
   steps:
-  - intent: comprar_frutas
+  - intent: buscar_frutas
   - action: action_buscar_productos
 
-- story: Comprar_Joyeria
+- story: buscar Joyeria
   steps:
-  - intent: comprar_joyeria
+  - intent: buscar_joyeria
   - action: action_buscar_productos
 
-- story: Comprar_Pantalones
+- story: buscar Pantalones
   steps:
-  - intent: comprar_pantalones
+  - intent: buscar_pantalones
   - action: action_buscar_productos
 
+- story: resetear_carrito
+  steps:
+  - intent: vaciar_carrito
+  - action: utter_advertencia  
+  - intent: confirmar
+  - action: action_vaciar_carrito  
+  - slot_was_set:
+    - carrito: null
+  - action: utter_carrito_vaciado  
 
+- story: no_resetear_carrito
+  steps:
+  - intent: vaciar_carrito
+  - action: utter_advertencia
+  - intent: negar
+  - action: utter_carrito_vaciado_cancelado
+
+- story: eliminar producto carrito
+  steps:
+  - intent: eliminar_producto_carrito
+  - slot_was_set:
+    - logged_in: True
+  - action: utter_advertencia
+  - intent: confirmar
+  - action: action_eliminar_producto
+
+- story: eliminar producto carrito cancelado
+  steps:
+  - intent: eliminar_producto_carrito
+  - slot_was_set:
+    - logged_in: True
+  - action: utter_advertencia
+  - intent: negar
+  - action: utter_carrito_elemento_eliminado_cancelado
+
+- story: eliminar producto carrito sesion no iniciada
+  steps:
+  - intent: eliminar_producto_carrito
+  - slot_was_set:
+    - logged_in: False
+  - action: utter_not_logged_in
+
+- story: consultar ofertas
+  steps:
+  - intent: consultar_ofertas_disponibles
+  - action: action_consultar_ofertas

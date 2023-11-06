@@ -110,7 +110,7 @@ class Pantalon(Prenda):
 
 class Vestido(Prenda):
     def __init__(self, id, marca, talle, color, categorias, tipo, descripciones, material, precio, stock):
-        super().__init__(id, marca, talle, color, categorias, tipo, descripciones, material, precio, stock)
+        super().__init__(id, marca, talle, color, categorias, precio, tipo, descripciones, material, stock)
 
 
 class AlimentoLiquido(Producto):

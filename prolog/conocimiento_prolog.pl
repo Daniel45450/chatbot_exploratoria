@@ -15,8 +15,8 @@ producto(p19, [ropa, pantalon, pantalones], [talle="36", color="celeste", tipo="
 
 
 %vestidos
-producto(p3, [ropa, vestido, vestidos], [talle="S", color="negro", material="algodon"], ["Vestido negro de talla S"], dafiti, 6, 150).
-producto(p16, [ropa, vestido, vestidos], [talle="M", color="rojo", material="seda"], ["Vestido rojo de talla M"], rinu, 6, 200).
+producto(p3, [ropa, vestido, vestidos], [talle="S", color="negro", material="algodon", tipo="largo"], ["Vestido negro de talla S"], dafiti, 6, 150).
+producto(p16, [ropa, vestido, vestidos], [talle="M", color="rojo", material="seda", tipo="corto"], ["Vestido rojo de talla M"], rinu, 6, 200).
 
 %zapatillas
 producto(p4, [zapatilla, calzado, zapatillas], [talle="38", color="rojo", tipo="comunes", material="Malla"], ["Zapatilla nike talle 38 rojas"], nike, 10, 600).
@@ -54,6 +54,13 @@ local("Tienda de Comida",[p7,p8,p9,p15,p17,p18],"12:00","23:00").
 local("Tienda de frutas",[p19],"12:00","23:00").
 local("Tienda de joyeria",[p10,p11,p12],"08:00","13:00").
 local("Tienda de vestidos",[p16],"08:00","13:00").
+
+%ofertas oferta(tienda, efectivo, 6 cuotas, 12cuotas)
+oferta("Tienda de Ropa",  0.5).
+oferta("Tienda de Calzado", 0.4).
+
+buscar_ofertas(Tiendas) :- findall((Tienda, Efectivo), oferta(Tienda, Efectivo), Tiendas).
+
 
 buscar_tienda_producto(Id, Tienda):- local(Tienda, Productos, _, _), member(Id, Productos).
 

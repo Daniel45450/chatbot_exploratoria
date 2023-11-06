@@ -1,19 +1,23 @@
 version: '3.1'
 actions:
-- action_buscar_productos
-- utter_decir_hola
-- utter_not_logged_in
-- action_agregar_producto
-- action_logear
 - utter_submit
+- action_logear
+- utter_contar_chiste
+- utter_decir_hola
+- action_ver_carrito
+- action_agregar_producto
+- action_respuesta_animo
+- action_buscar_productos
+- utter_decir_adios
 - utter_iniciar_sesion
+- utter_carrito_vaciado
+- action_vaciar_carrito
+- utter_advertencia
+- utter_not_logged_in
 - utter_bienvenida
 - utter_inicio_crear_cuenta
 - utter_datos_registro
 - action_registrar
-- utter_decir_adios
-- action_respuesta_animo
-- utter_contar_chiste
 - utter_confirmacion
 - validate_registro_form
 - utter_ask_nombre
@@ -21,6 +25,12 @@ actions:
 - utter_ask_telefono
 - utter_info_registro
 - utter_ask_direccion_entrega
+- utter_carrito_vaciado_cancelado
+- action_eliminar_producto
+- utter_carrito_elemento_eliminado
+- utter_carrito_elemento_no_encontrado
+- utter_carrito_elemento_eliminado_cancelado
+- action_consultar_ofertas
 forms:
   registro_form:
     required_slots:
@@ -39,51 +49,71 @@ slots:
     mappings:
     - type: custom
       entity: precio
+      conditions:
+      - active_loop: null
   gusto:
     type: any
     mappings:
     - type: custom
       entity: gusto
+      conditions:
+      - active_loop: null
   peso:
     type: any
     mappings:
     - type: custom
       entity: gusto
+      conditions:
+      - active_loop: null
   id:
     type: any
     mappings:
     - type: from_entity
       entity: id
+      conditions:
+      - active_loop: null
   marca:
     type: any
     mappings:
     - type: from_entity
       entity: marca
+      conditions:
+      - active_loop: null
   color:
     type: any
     mappings:
     - type: from_entity
       entity: color
+      conditions:
+      - active_loop: null
   material:
     type: any
     mappings:
     - type: from_entity
       entity: material
+      conditions:
+      - active_loop: null
   talle:
     type: any
     mappings:
     - type: from_entity
       entity: talle
+      conditions:
+      - active_loop: null
   tipo:
     type: any
     mappings:
     - type: from_entity
       entity: tipo
+      conditions:
+      - active_loop: null
   categoria:
     type: any
     mappings:
     - type: from_entity
       entity: categoria
+      conditions:
+      - active_loop: null
   nombre:
     type: text
     influence_conversation: true
@@ -144,14 +174,14 @@ slots:
 intents:
 - Presentarse
 - agregar_producto_carrito
-- comprar_alimento_liquido
-- comprar_camisetas
-- comprar_frutas
-- comprar_joyeria
-- comprar_pantalones
-- comprar_snacks
-- comprar_vestidos
-- comprar_zapatos
+- buscar_alimento_liquido
+- buscar_camisetas
+- buscar_frutas
+- buscar_joyeria
+- buscar_pantalones
+- buscar_snacks
+- buscar_vestidos
+- buscar_zapatos
 - confirmar
 - contar_chiste
 - crear_cuenta
@@ -161,7 +191,9 @@ intents:
 - negar
 - preguntar_animo
 - saludar
+- vaciar_carrito
 - ver_carrito
+- consultar_ofertas_disponibles
 responses:
   utter_info_registro:
   - text: 'Esta es la informacion que se registro nombre de usuario: {nombre} email: {correo_electronico} telefono: {telefono}.'
@@ -249,16 +281,33 @@ responses:
   utter_not_logged_in:
   - text: Necesitas iniciar sesion para continuar
   - text: Debes iniciar sesion para continuar
+  utter_advertencia:
+  - text: Seguro que quieres continuar?
+  - text: Estas seguro que quieres continuar?
+  utter_default:
+  - text: Lo siento, no comprendí tu solicitud. ¿Puedes reformularla o proporcionar más detalles?
+  utter_carrito_vaciado:
+  - text: El carrito se vacio con exito
+  - text: Se borraron todo los elementos del carrito con exito
+  utter_carrito_vaciado_cancelado:
+  - text: El carrito ya no se vaciara
+  - text: 'Accion cancelada: el carrito no se vaciara'
+  utter_carrito_elemento_eliminado_cancelado:
+  - text: ya no se borrara el elemento {id} del carrito
+  utter_carrito_elemento_eliminado:
+  - text: Se elimino con exito el producto {id}
+  utter_carrito_elemento_no_encontrado:
+  - text: El producto {id} no se encuentra en el carrito
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 entities:
-- id
 - categoria
-- tipo
-- color
-- marca
+- id
 - talle
-- precio
 - material
+- color
+- tipo
+- marca
+- precio
 - peso

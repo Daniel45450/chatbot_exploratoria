@@ -1,0 +1,26 @@
+[
+  {
+    "text": "\"Hola, ¿cómo estás?\"",
+    "intent": "preguntar_animo",
+    "intent_prediction": {
+      "name": "saludar",
+      "confidence": 0.5266438126564026
+    }
+  },
+  {
+    "text": "quiero vaciar el carrito",
+    "intent": "vaciar_carrito",
+    "intent_prediction": {
+      "name": "ver_carrito",
+      "confidence": 0.38310706615448
+    }
+  },
+  {
+    "text": "no quiero comprar nada",
+    "intent": "vaciar_carrito",
+    "intent_prediction": {
+      "name": "comprar_joyeria",
+      "confidence": 0.6570359468460083
+    }
+  }
+]

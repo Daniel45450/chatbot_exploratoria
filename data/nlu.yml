@@ -34,6 +34,7 @@ nlu:
     - "Como estas hoy?"
     - "Si bien y vos"
     - que tal estas?
+    - bien y vos
 - intent: despedir
   examples: |
     - "¡Adiós!"
@@ -47,9 +48,7 @@ nlu:
     - Nos vemos luego
     - Bueno listo ya estaria nos vemos
     - Nos vemos
-    - Martin M
-    - San M
-    - nos vemos
+    - bye
 - intent: confirmar
   examples: |
     - "Sí"
@@ -61,18 +60,7 @@ nlu:
     - "Afirmativo"
     - "Correcto"
     - "ok"
-    - "Sos humoristas?"
     - si
-    - Daniel
-    - Danielgabinari@hotmail.com
-    - 2281682610
-    - danielgabinari@hotmail.com
-    - 1234
-    - daniel
-    - 12345
-    - Daiel
-    - pato@hotmail.com
-    - 123456789
 - intent: negar
   examples: |
     - "No"
@@ -82,6 +70,8 @@ nlu:
     - "No, en este momento"
     - "Lo siento, pero no"
     - "No, no quiero"
+    - no cancelar
+    - cancelar
 - intent: contar_chiste
   examples: |
     - "Contame un chiste por favor"
@@ -92,6 +82,7 @@ nlu:
     - "contar chiste"
     - "Contame otro chiste"
     - Contame un chiste
+    - me aburri contame un chiste
 - intent: crear_cuenta
   examples: |
     - "No tengo cuenta quiero iniciar sesion"
@@ -122,7 +113,8 @@ nlu:
     - "quiero logear"
     - "Quiero entrar a mi cuenta"
     - Quiero iniciar sesion
-- intent: comprar_zapatos
+    - quiero iniciar sesion
+- intent: buscar_zapatos
   examples: |
     - Me gustaria comprar [zapatillas](categoria) de color [rojo](color) talle [40](talle)
     - Quiero comprar [zapatillas](categoria) de color [negro](color) talle [28](talle)
@@ -134,46 +126,49 @@ nlu:
     - quiero comprar [calzado](categoria) de color [negro](color)
     - quiero comprar [zapatos](categoria) de color [rojo](color)
     - quiero comprar [zapatos](categoria) de color [negro](color)
-- intent: comprar_camisetas
+- intent: buscar_camisetas
   examples: |
     - "Quiero una [camiseta](categoria)"
     - "Me gustaría comprar [ropa](categoria)"
     - "¿Tienen [camisetas](categoria) de [algodon](material)?"
-- intent: comprar_pantalones
+    - tienen [camisetas](categoria) de [algodon](material)?
+- intent: buscar_pantalones
   examples: |
     - "Quiero comprar [pantalones](categoria) [cortos]{"entity": "tipo", "value": "corto"}"
     - "Necesito [pantalones](categoria)"
     - "Estoy buscando [jeans](categoria) talle [40](talle)"
-    - "Estoy buscando [jeans](categoria) de color [negro](negro) talle [36](talle)"
+    - "Estoy buscando [jeans](categoria) de color [negro](color) talle [36](talle)"
     - "¿Tienen [pantalones](categoria) [cortos]{"entity": "tipo", "value": "corto"}?"
     - "venden algun [pantalon](categoria) [largo](tipo) talle [36](talle)?"
     - quiero comprar [pantalones](categoria) [cortos]{"entity": "tipo", "value": "corto"}
     - quiero comprar [pantalones](categoria) [largos]{"entity": "tipo", "value": "largo"}
-    - quiero comprar [pantalones](categoria) [largos]{"entity": "tipo", "value": "largo"}
-- intent: comprar_vestidos
+    - quiero comprar [pantalones](categoria)
+    - quiero comprar [pantalones](categoria)
+- intent: buscar_vestidos
   examples: |
     - "Tienen algun [vestido](categoria) de color [negro](color)"
     - "Estoy buscando un [vestido](categoria) talle [S](talle)"
-    - "Quiero comprar un [vestido](categoria) talle [M](talle) de color [rojo](rojo) de [seda](material)"
+    - quiero comprar algun [vestido](categoria)
+    - "Quiero comprar un [vestido](categoria) talle [M](talle) de color [rojo](color) de [seda](material)"
     - "Que [vestidos](categoria) de marca [dafiti](marca) hay?"
-- intent: comprar_alimento_liquido
+- intent: buscar_alimento_liquido
   examples: |
     - "Quiero comprar [leche](categoria)"
     - "hay [leche](categoria) [light](tipo)?"
     - "Tenes [leche](categoria) [entera](tipo)?"
-- intent: comprar_snacks
+- intent: buscar_snacks
   examples: |
     - "Tengo ganas de comer un [snack](categoria) [salado](gusto)"
     - "Tenes [doritos](categoria)?"
     - "Tengo ganas de comer algo [salado](gusto)"
     - "Quiero comer comer algo [dulce](gusto)"
-- intent: comprar_frutas
+- intent: buscar_frutas
   examples: |
     - "Quiero comprar [bananas](categoria)"
     - "tengo ganas de comer [bananas](categoria)"
     - "Hay [manzanas](categoria)"?
     - "quiero comprar [manzanas](categoria)"
-- intent: comprar_joyeria
+- intent: buscar_joyeria
   examples: |
     - "Quiero comprar un [collar](categoria)"
     - "Tenes algun [collar](categoria) de [diamante](material)"
@@ -190,20 +185,45 @@ nlu:
     - agregame el producto [p2](id)
     - agregame el producto [p3](id) al carrito
     - agregame el producto [p4](id) al carrito
+    - agregame el producto [p2](id) al carrito
+    - agregame el producto [p20](id) al carrito
+    - agrega el producto [p3](id) al carrito
+    - quiero agregar el producto [p2](id) al carrito
+    - quiero agregar el producto [p14](id) al carrito
+    - quiero agregar el producto [p2](id) al carrito
+    - agrega el producto [p1](id)
 - intent: ver_carrito
   examples: |
     - "Mostrame el contenido del carrito"
+    - quiero ver el carrito
     - "Quiero ver que tengo en el carrito"
     - "Mostrame el carrito"
     - "Que productos agrege al carrito?"
     - "Recordame que guarde en el carrito"
     - "Cuanto debo pagar?"
+    - que productos tengo en el carrito?
+    - mostrame el carrito
+- intent: consultar_ofertas_disponibles
+  examples: |
+    - que ofertas hay disponibles?
+    - tenes alguna oferta?
+    - mostrame alguna oferta
+    - que ofertas tenes
 - intent: eliminar_producto_carrito
   examples: |
-    - "Elimina el producto [id](id) del carrito"
-    - "elimina el producto [id](id)"
-    - "No quiero comprar el producto [id](id)"
-    - "Me arrepenti no quiero comprar el producto [id](id)"
+    - "Elimina el producto [p19](id) del carrito"
+    - "elimina el producto [p4](id)"
+    - "No quiero comprar el producto [p6](id)"
+    - "Me arrepenti no quiero comprar el producto [p10](id)"
+    - "eliminame el producto [p7](id)"
+- intent: vaciar_carrito
+  examples: |
+    - quiero vaciar el carrito
+    - borra todo lo que tengo en el carrito
+    - vacía mi carrito
+    - vaciar carrito por favor
+    - eliminar productos del carrito
+    - cancelar mi compra
 - synonym: corto
   examples: |
     - cortos

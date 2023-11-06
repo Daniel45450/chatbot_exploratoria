@@ -28,5 +28,5 @@ class ActionAgregarProducto(Action):
             carrito.append(producto_seleccionado)
             dispatcher.utter_message(f"El producto {id} se agrego al carrito con exito")
         else:
-            dispatcher.utter_message(f'No tengo conomiento de ese producto')
-        return [SlotSet('carrito', carrito)]
+            dispatcher.utter_message(f'No tengo conocimiento de ese producto')
+        return [SlotSet('carrito', carrito), SlotSet('id', None)]

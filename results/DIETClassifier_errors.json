@@ -1,0 +1,43 @@
+[
+  {
+    "text": "\"Vendes algun anillo de diamante\"",
+    "entities": [
+      {
+        "start": 14,
+        "end": 20,
+        "value": "anillo",
+        "entity": "categoria"
+      },
+      {
+        "start": 24,
+        "end": 32,
+        "value": "diamante",
+        "entity": "categoria"
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "categoria",
+        "start": 14,
+        "end": 20,
+        "confidence_entity": 0.9990867376327515,
+        "value": "anillo",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "material",
+        "start": 24,
+        "end": 32,
+        "confidence_entity": 0.698623776435852,
+        "value": "diamante",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  }
+]

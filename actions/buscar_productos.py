@@ -40,7 +40,6 @@ class AccionBuscarProductos(Action):
         consulta_query += f'Productos).'
         result = consultarPL(port, path_db, consulta_query)
         lista_productos = []
-
         ultimo_intent = tracker.get_intent_of_latest_message()
         for resultado in result[0].get('Productos', []):  # Accede a la lista de productos en el resultado
             consulta_query = f'buscar_producto({resultado}, Producto).'
@@ -61,14 +60,14 @@ class AccionBuscarProductos(Action):
                 stock = producto[5]     
 
                 intents_to_Producto = {
-                     'comprar_zapatos': 'zapatos',
-                     'comprar_camisetas': 'camiseta',
-                     'comprar_pantalones': 'pantalon',
-                     'comprar_vestidos': 'vestido',
-                     'comprar_frutas': 'fruta',
-                     'comprar_snacks': 'snack',
-                     'comprar_joyeria': 'joyeria',
-                     'comprar_alimento_liquido': 'alimento_liquido'
+                     'buscar_zapatos': 'zapatos',
+                     'buscar_camisetas': 'camiseta',
+                     'buscar_pantalones': 'pantalon',
+                     'buscar_vestidos': 'vestido',
+                     'buscar_frutas': 'fruta',
+                     'buscar_snacks': 'snack',
+                     'buscar_joyeria': 'joyeria',
+                     'buscar_alimento_liquido': 'alimento_liquido'
 
                 }
 
@@ -92,8 +91,12 @@ class AccionBuscarProductos(Action):
                 i = random.randint(0, len(des)-1)
                 tienda = buscar_tienda_producto(producto.get_id())
                 dispatcher.utter_message(f'ID: {producto.get_id()} Descripcion: {des[i]} Cantidad disponible: {producto.get_stock()} Precio: {producto.get_precio()} Tienda: {tienda}\n')
-                productos_serializados.append(producto.to_dict())
-        listado_resetear = ['categoria','color', 'material', 'talle', 'gusto', 'marca', 'peso']
+                producto_dict = producto.to_dict()
+                producto_dict.update({
+                    'tienda': tienda
+                })
+                productos_serializados.append(producto_dict) 
+        listado_resetear = ['categoria','color', 'material', 'talle', 'gusto', 'marca', 'peso', 'tipo']
         listado_setear = []
         for parametro in listado_resetear:
             if parametro is not None:

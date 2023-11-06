@@ -47,7 +47,7 @@ class Logear(Action):
 
 
         if not response:
-            dispatcher.utter_message(f"Error: Este usuario no esta en nuestro sistema")
+            dispatcher.utter_message(f"Error: Este usuario no esta en nuestro sistema o los datos son incorrectos")
             return [SlotSet("correo_electronico", None), SlotSet("contrasena", None)]
         else: 
             nombre = response[0].get('Nombre')
