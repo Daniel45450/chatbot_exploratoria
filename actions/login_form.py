@@ -47,12 +47,10 @@ class Logear(Action):
 
 
         if not response:
-            dispatcher.utter_message(f"Error: Este usuario no esta en nuestro sistema o los datos son incorrectos")
-            return [SlotSet("correo_electronico", None), SlotSet("contrasena", None)]
+            return [SlotSet("correo_electronico", None), SlotSet("contrasena", None), SlotSet("logged_in", False)]
         else: 
             nombre = response[0].get('Nombre')
             telefono = response[0].get('Telefono')
             productos_comprados = response[0].get('ProductosComprados')
             direccion = response[0].get('Direccion')
-            dispatcher.utter_message(f"Logeado con exito")
             return [SlotSet("nombre", nombre), SlotSet("correo_electronico", correo_electronico), SlotSet("telefono", telefono), SlotSet("direccion_entrega", direccion), SlotSet("contrasena", contrasena), SlotSet("logged_in", True)] 

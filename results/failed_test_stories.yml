@@ -47,5 +47,5 @@ stories:
   - action: utter_goodbye  # predicted: action_default_fallback
 - story: bot challenge (.\venv\Lib\site-packages\rasa\cli\initial_project\tests\test_stories.yml)
   steps:
-  - intent: bot_challenge  # predicted: iniciar_sesion: are you a bot?
+  - intent: bot_challenge  # predicted: saludar: are you a bot?
   - action: utter_iamabot  # predicted: action_default_fallback

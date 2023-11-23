@@ -12,10 +12,16 @@ class ActionAgregarProducto(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        logged_in = tracker.get_slot('logged_in')
+        if logged_in == False:
+            dispatcher.utter_message('Debes iniciar sesion para poder eliminar un producto del carrito')
+            return []
+        
         id = tracker.get_slot('id')
         carrito = tracker.get_slot('carrito')
         if carrito == None:
             dispatcher.utter_message(f'No hay elementos para borrar en el carrito')
+            return []
         else:
             nuevo_carrito = []
             encontrado = False

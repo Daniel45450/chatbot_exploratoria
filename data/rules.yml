@@ -7,59 +7,12 @@ rules:
   - intent: despedir
   - action: utter_decir_adios
 
-- rule: Agregar producto al carrito si está logueado
-  condition:
-  - slot_was_set:
-    - logged_in: True
+- rule: saludar
   steps:
-  - intent: agregar_producto_carrito
-  - action: action_agregar_producto
+  - intent: saludar
+  - action: utter_decir_hola
 
-- rule: Agregar producto al carrito si no está logueado
-  condition:
-  - slot_was_set:
-    - logged_in: False
+- rule: consultar mi nombre
   steps:
-  - intent: agregar_producto_carrito
-  - action: utter_not_logged_in
-
-- rule: Ver carrito
-  steps:
-  - intent: ver_carrito
-  - action: action_ver_carrito
-
-- rule: Activate form_registro
-  steps:
-  - intent: crear_cuenta
-  - action: utter_inicio_crear_cuenta
-  - action: registro_form
-  - active_loop: registro_form
-
-- rule: Submit form_registro
-  condition:
-  - active_loop: registro_form
-  steps:
-  - action: registro_form
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - action: utter_submit
-  - action: utter_datos_registro
-
-- rule: Activate form_login
-  steps:
-  - intent: iniciar_sesion
-  - action: utter_iniciar_sesion
-  - action: login_form
-  - active_loop: login_form
-
-- rule: Submit form_login
-  condition:
-  - active_loop: login_form
-  steps:
-  - action: login_form
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - action: utter_submit
-  - action: action_logear
+  - intent: preguntar_nombre
+  - action: utter_mi_nombre

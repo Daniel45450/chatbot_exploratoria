@@ -11,9 +11,14 @@ class ActionAgregarProducto(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        logged_in = tracker.get_slot('logged_in')
+        if logged_in == False:
+            dispatcher.utter_message(response= "utter_not_logged_in")
+            return []
 
         productos = tracker.get_slot('productos')
-        id = tracker.get_slot('id')
+        id = next(tracker.get_latest_entity_values("id"), None)
         print(type(id), id)
         carrito = tracker.get_slot('carrito')
         producto_seleccionado = {}
@@ -26,7 +31,7 @@ class ActionAgregarProducto(Action):
             if carrito == None:
                 carrito = []
             carrito.append(producto_seleccionado)
-            dispatcher.utter_message(f"El producto {id} se agrego al carrito con exito")
+            dispatcher.utter_message(response="utter_producto_agregado")
         else:
-            dispatcher.utter_message(f'No tengo conocimiento de ese producto')
-        return [SlotSet('carrito', carrito), SlotSet('id', None)]
+            dispatcher.utter_message(response= "utter_producto_no_encontrado")
+        return [SlotSet('carrito', carrito)]

@@ -111,3 +111,4 @@ rasa/
 .models
 /results
 .results
+results/

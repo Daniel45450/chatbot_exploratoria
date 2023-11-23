@@ -1,6 +1,7 @@
 version: '3.1'
 actions:
 - utter_submit
+- action_resetear_register_form
 - action_logear
 - utter_contar_chiste
 - utter_decir_hola
@@ -31,6 +32,20 @@ actions:
 - utter_carrito_elemento_no_encontrado
 - utter_carrito_elemento_eliminado_cancelado
 - action_consultar_ofertas
+- utter_nombre
+- utter_email
+- utter_direccion
+- utter_telefono
+- utter_mi_nombre
+- utter_mis_gustos
+- utter_recomendar_tienda_agua
+- utter_recomendar_tienda_ropa
+- utter_recomendar_tienda_comida
+- utter_producto_agregado
+- utter_producto_no_encontrado
+- utter_not_logged_in_carrito
+- utter_carrito_vacio
+- utter_mostrar_carrito
 forms:
   registro_form:
     required_slots:
@@ -44,76 +59,12 @@ forms:
     - correo_electronico
     - contrasena
 slots:
-  precio:
-    type: any
-    mappings:
-    - type: custom
-      entity: precio
-      conditions:
-      - active_loop: null
-  gusto:
-    type: any
-    mappings:
-    - type: custom
-      entity: gusto
-      conditions:
-      - active_loop: null
-  peso:
-    type: any
-    mappings:
-    - type: custom
-      entity: gusto
-      conditions:
-      - active_loop: null
   id:
-    type: any
+    type: text
+    influence_conversation: False
     mappings:
     - type: from_entity
       entity: id
-      conditions:
-      - active_loop: null
-  marca:
-    type: any
-    mappings:
-    - type: from_entity
-      entity: marca
-      conditions:
-      - active_loop: null
-  color:
-    type: any
-    mappings:
-    - type: from_entity
-      entity: color
-      conditions:
-      - active_loop: null
-  material:
-    type: any
-    mappings:
-    - type: from_entity
-      entity: material
-      conditions:
-      - active_loop: null
-  talle:
-    type: any
-    mappings:
-    - type: from_entity
-      entity: talle
-      conditions:
-      - active_loop: null
-  tipo:
-    type: any
-    mappings:
-    - type: from_entity
-      entity: tipo
-      conditions:
-      - active_loop: null
-  categoria:
-    type: any
-    mappings:
-    - type: from_entity
-      entity: categoria
-      conditions:
-      - active_loop: null
   nombre:
     type: text
     influence_conversation: true
@@ -121,7 +72,6 @@ slots:
     - type: from_text
       conditions:
       - active_loop: registro_form
-        requested_slot: nombre
   correo_electronico:
     type: text
     influence_conversation: true
@@ -161,6 +111,7 @@ slots:
   logged_in:
     type: bool
     initial_value: false
+    influence_conversation: true
     mappings:
     - type: custom
   carrito:
@@ -171,32 +122,43 @@ slots:
     type: list
     mappings:
     - type: custom
+  mi_nombre:
+    type: text
+    initial_value: "el Gato bot"
+    mappings:
+    - type: custom
 intents:
-- Presentarse
-- agregar_producto_carrito
-- buscar_alimento_liquido
-- buscar_camisetas
-- buscar_frutas
-- buscar_joyeria
-- buscar_pantalones
-- buscar_snacks
-- buscar_vestidos
-- buscar_zapatos
+- saludar
+- preguntar_animo
+- despedir
 - confirmar
+- negar
 - contar_chiste
 - crear_cuenta
-- despedir
-- eliminar_producto_carrito
 - iniciar_sesion
-- negar
-- preguntar_animo
-- saludar
-- vaciar_carrito
+- buscar_producto
+- tener_hambre
+- comprar_ropa
+- tener_sed
+- agregar_producto_carrito
+- recordar_nombre
+- recordar_email
+- recordar_telefono
+- recordar_direccion
 - ver_carrito
 - consultar_ofertas_disponibles
+- eliminar_producto_carrito
+- vaciar_carrito
+- preguntar_nombre
+- consultar_gustos_bot
+
 responses:
   utter_info_registro:
   - text: 'Esta es la informacion que se registro nombre de usuario: {nombre} email: {correo_electronico} telefono: {telefono}.'
+  utter_login_exitoso:
+  - text: Logeado con exito
+  utter_login_error:
+  - text: "Error: Este usuario no esta en nuestro sistema o los datos son incorrectos"
   utter_decir_adios:
   - text: Adiós
   - text: Nos vemos
@@ -270,9 +232,9 @@ responses:
   utter_ask_contrasena:
   - text: Escribe una contraseña
   utter_datos_registro:
-  - text: 'Nombre: {nombre}, Email: {correo_electronico}, Telefono: {telefono}, Direccion: {direccion_entrega} \nLos datos son correctos?'
+  - text: 'Nombre: {nombre}, Email: {correo_electronico}, Telefono: {telefono}, Direccion: {direccion_entrega}. Los datos son correctos?'
   utter_submit:
-  - text: Ok. Gracias!
+  - text: Gracias por proporcionar los datos. Espere un momento..
   utter_bienvenida:
   - text: Bienvenido nuevamente {nombre}
   - text: Hola de nuevo {nombre}
@@ -281,6 +243,8 @@ responses:
   utter_not_logged_in:
   - text: Necesitas iniciar sesion para continuar
   - text: Debes iniciar sesion para continuar
+  utter_not_logged_in_carrito:
+  - text: Debes iniciar sesion para ver el carrito
   utter_advertencia:
   - text: Seguro que quieres continuar?
   - text: Estas seguro que quieres continuar?
@@ -292,22 +256,94 @@ responses:
   utter_carrito_vaciado_cancelado:
   - text: El carrito ya no se vaciara
   - text: 'Accion cancelada: el carrito no se vaciara'
+  utter_producto_no_encontrado:
+  - text: No tengo conocimiento de ese producto
+  - text: Lo siento, no encontré información sobre ese producto
+  - text: Parece que el producto que buscas no está disponible. ¿Hay algo más en lo que pueda ayudarte?
   utter_carrito_elemento_eliminado_cancelado:
-  - text: ya no se borrara el elemento {id} del carrito
+  - text: ¡Listo! El elemento ha sido eliminado del carrito.
+  - text: Entendido, el producto ha sido eliminado del carrito.
+  - text: He eliminado el producto de tu carrito."
+  - text: El artículo ha sido eliminado con éxito de tu carrito.
+  - text: Elemento cancelado. ¿Necesitas algo más?
   utter_carrito_elemento_eliminado:
-  - text: Se elimino con exito el producto {id}
-  utter_carrito_elemento_no_encontrado:
-  - text: El producto {id} no se encuentra en el carrito
+  - text: El producto ha sido eliminado con éxito.
+  - text: ¡Perfecto! Producto eliminado del carrito.
+  - text: Has eliminado el artículo de tu carrito.
+  - text: ¡Hecho! El producto ya no está en tu carrito.
+  - text: Producto eliminado. ¿Necesitas algo más?
+  utter_carrito_vacio:
+  - text: Tu carrito está vacío por el momento.
+  - text: No tienes productos en tu carrito.
+  - text: El carrito está vacío. ¿Necesitas ayuda con algo más?
+  - text: No hay artículos en tu carrito en este momento.
+  - text: ¿Quieres explorar nuestros productos? El carrito está vacío por ahora.
+  utter_mostrar_carrito:
+  - text: Estos son los productos que hay en tu carrito
+  - text: Aquí está la lista de productos en tu carrito
+  - text: Revisemos los artículos que has agregado al carrito
+  - text: A continuación, encontrarás los productos en tu carrito
+  - text: Echemos un vistazo a lo que tienes en el carrito
+utter_carrito_elemento_no_encontrado:
+  - text: Lo siento, pero no encontré ese producto en tu carrito.
+  - text: El producto que mencionaste no parece estar en tu carrito.
+  - text: Parece que ese artículo no está en tu carrito.
+  - text: No pude encontrar el producto que mencionaste en tu carrito.
+  - text: Verifiqué, pero no parece que tengas ese producto en tu carrito.
+  utter_nombre:
+    - condition:
+        - type: slot
+          name: logged_in
+          value: true
+      text: ¡Claro, tu nombre es {nombre}!
+    - text: Solo puedo recordar tu nombre una ves iniciado sesion.
+  utter_email:
+    - condition:
+        - type: slot
+          name: logged_in
+          value: true
+      text: ¡Claro, tu nombre es {correo_electronico}!
+    - text: Solo recordare tu correo electronico una ves iniciado sesion.
+  utter_telefono:
+    - condition:
+        - type: slot
+          name: logged_in
+          value: true
+      text: ¡Tu numero de telefono es {telefono}!
+    - text: Solo puedo recordar tu numero telefonico cuando inicies sesion.
+  utter_direccion:
+    - condition:
+        - type: slot
+          name: logged_in
+          value: true
+      text: ¡Tu direccion es {direccion_entrega}!
+    - text: Solo puedo recordar tu numero telefonico cuando inicies sesion.
+  utter_producto_agregado:
+  - text: El producto {id} se agregó con éxito a tu carrito.
+  - text: ¡Buena elección! El producto {id} ha sido añadido a tu carrito.
+  - text: Has agregado el producto {id} a tu carrito.
+  - text: ¡Excelente! El producto {id} se ha incluido en tu carrito.
+  - text: Confirmado, el producto {id} ha sido añadido a tu carrito.
+  utter_mi_nombre:
+  - text: Mi nombre es {mi_nombre}
+  - text: Soy {mi_nombre}
+  - text: Me dicen {mi_nombre}
+  utter_mis_gustos:
+  - text: Me gusta comer doritos y tomar fernet
+  - text: Suelo jugar al volley en mi tiempo libre
+  - text: En la noche usualmente miro anime
+  utter_recomendar_tienda_agua:
+  - text: Te recomiendo nuestra tienda "Agua Pura Oasis", podes encontrar todo tipo de bebidas para saciar tu sed
+  - text: En la tienda "Agua Pura Oasis" puedes comprar agua o alguna gaseosa
+  utter_recomendar_tienda_ropa:
+  - text: ¡En nuestra tienda "Moda Elegante" podras encontrar las ultimas tendencias en moda!!!
+  - text: Quisas te interese visitar "Pisadas de Estilo" donde podras encontrar el mejor calzado!!!
+  utter_recomendar_tienda_comida:
+  - text: Puedes encontrar algo de comer en "Sabores del Día" !!!!
+  - text: Pasate por "Frescura Natural" para comprar alguna fruta, son las mejores!!!!
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 entities:
-- categoria
+- producto
 - id
-- talle
-- material
-- color
-- tipo
-- marca
-- precio
-- peso

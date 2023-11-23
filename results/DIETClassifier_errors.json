@@ -1,26 +1,75 @@
 [
   {
+    "text": "\"Tenes leche entera?\"",
+    "entities": [
+      {
+        "start": 7,
+        "end": 12,
+        "value": "leche",
+        "entity": "producto",
+        "role": "categoria"
+      },
+      {
+        "start": 13,
+        "end": 19,
+        "value": " \"producto\", \"role\": \"tipo\"",
+        "entity": "\"entity\""
+      }
+    ],
+    "predicted_entities": [
+      {
+        "entity": "producto",
+        "start": 7,
+        "end": 12,
+        "confidence_entity": 0.9919243454933167,
+        "role": "categoria",
+        "confidence_role": 0.9953727126121521,
+        "value": "leche",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      },
+      {
+        "entity": "producto",
+        "start": 13,
+        "end": 19,
+        "confidence_entity": 0.7480801939964294,
+        "role": "categoria",
+        "confidence_role": 0.46082937717437744,
+        "value": " \"producto\", \"role\": \"tipo\"",
+        "extractor": "DIETClassifier",
+        "processors": [
+          "EntitySynonymMapper"
+        ]
+      }
+    ]
+  },
+  {
     "text": "\"Vendes algun anillo de diamante\"",
     "entities": [
       {
         "start": 14,
         "end": 20,
         "value": "anillo",
-        "entity": "categoria"
+        "entity": "producto",
+        "role": "categoria"
       },
       {
         "start": 24,
         "end": 32,
-        "value": "diamante",
-        "entity": "categoria"
+        "value": " \"producto\", \"role\": \"material\"",
+        "entity": "\"entity\""
       }
     ],
     "predicted_entities": [
       {
-        "entity": "categoria",
+        "entity": "producto",
         "start": 14,
         "end": 20,
-        "confidence_entity": 0.9990867376327515,
+        "confidence_entity": 0.9872267842292786,
+        "role": "categoria",
+        "confidence_role": 0.9884252548217773,
         "value": "anillo",
         "extractor": "DIETClassifier",
         "processors": [
@@ -28,11 +77,13 @@
         ]
       },
       {
-        "entity": "material",
+        "entity": "producto",
         "start": 24,
         "end": 32,
-        "confidence_entity": 0.698623776435852,
-        "value": "diamante",
+        "confidence_entity": 0.6863994002342224,
+        "role": "material",
+        "confidence_role": 0.872398853302002,
+        "value": " \"producto\", \"role\": \"material\"",
         "extractor": "DIETClassifier",
         "processors": [
           "EntitySynonymMapper"

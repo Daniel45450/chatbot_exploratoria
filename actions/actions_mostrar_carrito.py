@@ -14,15 +14,15 @@ class ActionAgregarProducto(Action):
         
         login_in = tracker.get_slot('logged_in')
         if not login_in:
-            dispatcher.utter_message(f'Debes iniciar sesion para ver el carrito')
+            dispatcher.utter_message(response= "utter_not_logged_in_carrito")
             return []
         else:    
             carrito = tracker.get_slot('carrito')
             if carrito == None:
-                dispatcher.utter_message(f'No hay productos en el carrito')
+                dispatcher.utter_message(response= "utter_carrito_vacio")
             else:
                 total = 0
-                dispatcher.utter_message(f'Estos son los productos que hay en el carrito')
+                dispatcher.utter_message(response= "utter_mostrar_carrito")
                 for producto in carrito:
                     print
                     dispatcher.utter_message(f'ID: {producto.get("id")} Descripcion: {producto.get("descripciones")} Cantidad disponible: {producto.get("stock")} Precio: {producto.get("precio")} Tienda: {producto.get("tienda")}\n')
