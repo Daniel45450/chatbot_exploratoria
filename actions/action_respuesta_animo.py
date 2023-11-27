@@ -11,10 +11,14 @@ class AccionRespuestaAnimo(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
+        
+        # Lista de respuestas disponibles
         opciones_respuesta = ["utter_animo_bueno", "utter_animo_malo"]
-        respuesta_seleccionada = random.choice(opciones_respuesta)
 
+        # Seleccionar aleatoriamente una respuesta
+        respuesta_seleccionada = random.choice(opciones_respuesta)
+        
+        # Enviar la respuesta al usuario    
         dispatcher.utter_message(response = respuesta_seleccionada)
 
         return []

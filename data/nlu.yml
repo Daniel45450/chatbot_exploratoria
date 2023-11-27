@@ -6,13 +6,14 @@ nlu:
     - Hola, ¿cómo estás?
     - ¡Buen día!
     - Buenas tardes
+    - Buenos dias
     - ¡Hola a todos!
     - Buenas
     - Que onda?
     - hola
     - Buenas noches
     - hola que tal
-    - Hola
+
 - intent: preguntar_animo
   examples: |
     - ¿Cómo te sientes hoy?
@@ -32,6 +33,7 @@ nlu:
     - que tal estas?
     - bien y vos
     - todo bien?
+
 - intent: despedir
   examples: |
     - ¡Adiós!
@@ -46,6 +48,7 @@ nlu:
     - Bueno listo ya estaria nos vemos
     - Nos vemos
     - bye
+
 - intent: confirmar
   examples: |
     - Si
@@ -57,6 +60,7 @@ nlu:
     - Afirmativo
     - Correcto
     - ok
+
 - intent: negar
   examples: |
     - No
@@ -68,6 +72,7 @@ nlu:
     - No, no quiero
     - no cancelar
     - cancelar
+
 - intent: contar_chiste
   examples: |
     - Contame un chiste por favor
@@ -79,6 +84,7 @@ nlu:
     - Contame otro chiste
     - Contame un chiste
     - me aburri contame un chiste
+
 - intent: crear_cuenta
   examples: |
     - No tengo cuenta quiero iniciar sesion
@@ -101,12 +107,14 @@ nlu:
     - me quiero registrar
     - Quisiera crear una cuenta
     - quiero registrarme
+
 - intent: iniciar_sesion
   examples: |
     - Quiero iniciar sesion
     - iniciar sesion
     - quiero logear"
     - Quiero entrar a mi cuenta
+
 - intent: buscar_producto
   examples: |
     - Me gustaria comprar [zapatillas]{"entity": "producto", "role": "categoria"} de color [rojo]{"entity": "producto", "role": "color"} talle [36]{"entity": "producto", "role": "talle"}
@@ -124,7 +132,7 @@ nlu:
     - tienen [camisetas]{"entity": "producto", "role": "categoria"} de [algodon]{"entity": "producto", "role": "material"}?
     - Quiero comprar [pantalones]{"entity": "producto", "role": "categoria"} [cortos]{"entity": "producto", "value": "corto", "role": "tipo"}
     - Necesito [pantalones]{"entity": "producto", "role": "categoria"}
-    - Estoy buscando [jeans]{"entity": "producto", "role": "categoria"} talle [36]{"entity": "producto", "role": "talle"}
+    - Estoy buscando [jean]{"entity": "producto", "role": "categoria"} talle [36]{"entity": "producto", "role": "talle"}
     - Estoy buscando [jeans]{"entity": "producto", "role": "categoria"} de color [negro]{"entity": "producto", "role": "color"} talle [36]{"entity": "producto", "role": "talle"}
     - ¿Tienen [pantalones]{"entity": "producto", "role": "categoria"} [cortos]{"entity": "producto", "value": "corto", "role": "tipo"}?
     - venden algun [pantalon]{"entity": "producto", "role": "categoria"} [largo]{"entity": "producto", "role": "tipo"} talle [36]{"entity": "producto", "role": "talle"}?
@@ -156,6 +164,7 @@ nlu:
     - quiero comprar algunas [bananas]{"entity": "producto", "role": "categoria"}
     - quiero comprar agua [agua]{"entity": "producto", "role": "categoria"}
     - hay [agua]{"entity": "producto", "role": "categoria"} [mineral]{"entity": "producto", "role": "tipo"}?
+
 - intent: tener_hambre
   examples: |
     - Tengo hambre
@@ -164,6 +173,7 @@ nlu:
     - Quiero comer algo
     - ¿Puedes recomendarme un lugar para comer?
     - Necesito algo para comer
+
 - intent: comprar_ropa
   examples: |
     - Quiero comprar ropa
@@ -174,6 +184,7 @@ nlu:
     - Me gustaría hacer compras de ropa
     - ¿Puedes recomendarme una tienda de ropa?
     - Busco algo para vestir
+
 - intent: tener_sed
   examples: |
     - Tengo sed
@@ -183,6 +194,7 @@ nlu:
     - ¿Puedes recomendarme un lugar para tomar algo?
     - Necesito algo para beber
     - ¿Dónde puedo conseguir una bebida?
+
 - intent: agregar_producto_carrito
   examples: |
     - Agregame el producto [p20](id) al carrito
@@ -192,11 +204,12 @@ nlu:
     - agregame el producto [p2](id)
     - agregame el producto [p3](id) al carrito
     - agregame el producto [p20](id) al carrito
-    - agrega el producto [p3](id) al carrito
+    - agrega el producto [p14](id) al carrito
     - quiero agregar el producto [p2](id) al carrito
     - agrega el producto [p1](id)
     - guardame el producto [p6](id) en el carrito
     - guarda el producto [p2](id)
+
 - intent: recordar_nombre
   examples: |
     - ¿Recuerdas mi nombre?
@@ -204,6 +217,8 @@ nlu:
     - ¿Cómo me llamo?
     - Mi nombre es [nombre], ¿lo recuerdas?
     - Sé que conoces mi nombre.
+    - recordas como me llamo?
+    - te acordas mi nombre?
 
 - intent: recordar_email
   examples: |
@@ -244,12 +259,14 @@ nlu:
     - que productos tengo en el carrito?
     - mostrame el carrito
     - cuanto tengo que pagar?
+
 - intent: consultar_ofertas_disponibles
   examples: |
     - que ofertas hay disponibles?
     - tenes alguna oferta?
     - mostrame alguna oferta
     - que ofertas tenes
+
 - intent: eliminar_producto_carrito
   examples: |
     - Elimina el producto [p19](id) del carrito
@@ -257,6 +274,7 @@ nlu:
     - No quiero comprar el producto [p6](id)
     - Me arrepenti no quiero comprar el producto [p10](id)
     - eliminame el producto [p7](id)
+
 - intent: vaciar_carrito
   examples: |
     - quiero vaciar el carrito
@@ -266,6 +284,7 @@ nlu:
     - cancelar mi compra
     - no quiero comprar nada
     - al final no voy a comprar nada
+
 - intent: preguntar_nombre
   examples: |
     - cual es tu nombre?
@@ -273,6 +292,7 @@ nlu:
     - como te dicen?
     - tenes algun nombre?
     - quien sos?
+
 - intent: consultar_gustos_bot
   examples: |
     - ¿Cuáles son tus gustos?
@@ -283,6 +303,39 @@ nlu:
     - que otra cosa te gusta hacer?
     - y que mas te gusta hacer
     - que mas haces
+
+- intent: recomendar_productos
+  examples: |
+    - ¿Qué productos me recomiendas?
+    - Necesito algunas recomendaciones de compra.
+    - ¿Cuáles son los productos más populares?
+    - Estoy buscando sugerencias de compra.
+    - ¿Tienes alguna recomendación de productos?
+    - Quiero comprar algo, ¿qué me sugieres?
+    - ¿Cuáles son tus mejores recomendaciones de productos?
+    - Dame algunas opciones de compra.
+    - ¿Qué productos son tendencia actualmente?
+    - ¿Puedes sugerirme algunos productos interesantes?
+    - ¿Cuáles son los productos más vendidos?
+    - recomendame algun producto
+    - que productos me pueden gustar?
+
+- intent: terminar_compra
+  examples: |
+    - Finalizar compra
+    - Comprar productos en el carrito
+    - Confirmar pedido
+    - Pagar mi compra
+    - Terminar la transacción
+    - Completar orden de compra
+    - Realizar el pago
+    - Confirmar y pagar
+    - Proceder al pago
+    - Concluir compra
+    - Finalizar pedido
+    - Confirmar compra
+    - Realizar pago
+
 - synonym: corto
   examples: |
     - cortos

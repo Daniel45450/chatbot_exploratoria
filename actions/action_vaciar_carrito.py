@@ -3,7 +3,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
-class ActionAgregarProducto(Action):
+class ActionVaciarCarrito(Action):
 
     def name(self) -> Text:
         return "action_vaciar_carrito"

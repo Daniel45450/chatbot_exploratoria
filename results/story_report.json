@@ -1,35 +1,17 @@
 {
-  "affirm": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 1
-  },
-  "utter_goodbye": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 4
-  },
-  "utter_happy": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 3
-  },
-  "greet": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 5
-  },
-  "goodbye": {
+  "mood_great": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
     "support": 2
   },
-  "deny": {
+  "mood_unhappy": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 3
+  },
+  "goodbye": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
@@ -41,23 +23,41 @@
     "f1-score": 0.9142857142857143,
     "support": 16
   },
-  "utter_cheer_up": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 3
-  },
   "utter_iamabot": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
     "support": 1
   },
-  "mood_unhappy": {
+  "greet": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 5
+  },
+  "utter_happy": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
     "support": 3
+  },
+  "utter_did_that_help": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 3
+  },
+  "affirm": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 1
+  },
+  "deny": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 2
   },
   "bot_challenge": {
     "precision": 0.0,
@@ -65,11 +65,11 @@
     "f1-score": 0.0,
     "support": 1
   },
-  "mood_great": {
+  "utter_cheer_up": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
-    "support": 2
+    "support": 3
   },
   "utter_greet": {
     "precision": 0.0,
@@ -77,11 +77,11 @@
     "f1-score": 0.0,
     "support": 5
   },
-  "utter_did_that_help": {
+  "utter_goodbye": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
-    "support": 3
+    "support": 4
   },
   "micro avg": {
     "precision": 0.8421052631578947,

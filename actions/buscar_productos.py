@@ -1,7 +1,6 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from actions.Producto import *
 from swiplserver import PrologMQI
 from actions.consultarPL import consultarPL
 from rasa_sdk.events import SlotSet
@@ -116,6 +115,7 @@ def buscar_producto(id):
     # dado un id busca un producto y sus caracteristicas y lo retorna en un diccionario
     consulta_query = f'buscar_producto({id}, Producto).'
     result_p = consultarPL(port, path_db, consulta_query)
+    # declaro un diccionario para ir construyendo un producto 
     producto = {}
     if result_p:
         element = result_p[0].get('Producto').get('args')
@@ -127,6 +127,7 @@ def buscar_producto(id):
             'precio': element[6],
             'stock': element[5]   
         }
+        # se procesan atributos como el color, talle y tipo dependiendo el producto seran distintos
         for atributo in element[2]:
             clave = atributo.get('args')[0]
             valor = atributo.get('args')[1]

@@ -104,12 +104,21 @@ stories:
     - logged_in: false
   - action: utter_login_error
 
+- story: terminar compra
+  steps:
+  - intent: terminar_compra
+  - action: utter_compra_exitosa
 
 - story: buscar productos
   steps:
   - intent: buscar_producto
   - action: action_buscar_productos
 
+- story: recomendar productos
+  steps:
+  - intent: recomendar_productos
+  - action: action_recomendar_productos
+  
 - story: resetear_carrito
   steps:
   - intent: vaciar_carrito

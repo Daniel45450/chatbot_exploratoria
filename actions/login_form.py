@@ -37,20 +37,25 @@ class Logear(Action):
     def run(self, dispatcher: CollectingDispatcher,
         tracker: Tracker,domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        # obtengo los datos cargados desde mi form
         correo_electronico = tracker.get_slot('correo_electronico')
         contrasena = tracker.get_slot('contrasena')
 
+        # creo un query para consultar prolog
         consulta_query = f'obtener_usuario(Nombre, "{correo_electronico}", Telefono, "{contrasena}", ProductosComprados, Direccion)'
 
         print(consulta_query)
+        # realizo la consulta
         response = consultarPL(port, path_db, consulta_query)
 
-
+        # si la respuesta es falsa no existe el usuario y reseteo los slots para que el que usuario vuelva a llenarlos en algun momento
         if not response:
             return [SlotSet("correo_electronico", None), SlotSet("contrasena", None), SlotSet("logged_in", False)]
         else: 
+            # proceso los atributos del usuario enviados en la respuesta
             nombre = response[0].get('Nombre')
             telefono = response[0].get('Telefono')
             productos_comprados = response[0].get('ProductosComprados')
             direccion = response[0].get('Direccion')
+            # seteo los slots con los datos correspondientes
             return [SlotSet("nombre", nombre), SlotSet("correo_electronico", correo_electronico), SlotSet("telefono", telefono), SlotSet("direccion_entrega", direccion), SlotSet("contrasena", contrasena), SlotSet("logged_in", True)] 

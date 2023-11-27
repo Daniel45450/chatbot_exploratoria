@@ -59,7 +59,7 @@ local("Atuendos Encantadores",[p16],"08:00","13:00").
 local("Agua Pura Oasis",[p22],"08:00","13:00").
 
 
-%ofertas oferta(tienda, efectivo, 6 cuotas, 12cuotas)
+%ofertas oferta(tienda, efectivo)
 oferta("Moda Elegante",  0.5).
 oferta("Pisadas de Estilo", 0.4).
 
@@ -68,33 +68,7 @@ buscar_ofertas(Tiendas) :- findall((Tienda, Efectivo), oferta(Tienda, Efectivo),
 
 buscar_tienda_producto(Id, Tienda):- local(Tienda, Productos, _, _), member(Id, Productos).
 
-
-filtrar_por_color(Color, Productos) :- findall(Producto, (
-    producto(Producto, _, Atributos, _, _, _, _),
-    member(color=Color, Atributos)
-), Productos).
-
-filtrar_por_talle(Talle, Productos) :- findall(Producto, (
-    producto(Producto, _, Atributos, _, _, _, _),
-    member(talle=Talle, Atributos)
-), Productos).
-
-filtrar_por_categoria(Categoria, Productos) :- findall(Producto, (
-    producto(Producto, Categorias, _, _, _, _, _),
-    member(Categoria, Categorias)
-), Productos).
-
-filtrar_precio_min(Precio, Productos):- findall(Producto, (
-    producto(Producto, _, _, _, _, _, PrecioProducto), PrecioProducto >= Precio
-), Productos).
-
-filtrar_precio_max(Precio, Productos):- findall(Producto, (
-    producto(Producto, _, _, _, _, _, PrecioProducto), PrecioProducto =< Precio
-), Productos).
-
 obtener_usuario(Nombre, Email, Telefono, Contrasena, Productoscomprados, Direccion) :- usuario(Nombre, Email, Telefono, Contrasena, Productoscomprados, Direccion).
-
-filtrar_por_marca(Marca, Productos):- findall(Producto, (producto(Producto, _, _, _, MarcaProducto, _, _), MarcaProducto = Marca), Productos).
 
 filtrarProductos(Categoria, Color, Material, Talle, Peso, Gusto, Marca, Tipo, Productos) :-
     findall(Producto, (

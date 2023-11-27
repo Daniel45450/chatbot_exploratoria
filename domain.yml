@@ -46,6 +46,8 @@ actions:
 - utter_not_logged_in_carrito
 - utter_carrito_vacio
 - utter_mostrar_carrito
+- action_recomendar_productos
+- utter_compra_exitosa
 forms:
   registro_form:
     required_slots:
@@ -151,8 +153,18 @@ intents:
 - vaciar_carrito
 - preguntar_nombre
 - consultar_gustos_bot
-
+- recomendar_productos
+- terminar_compra
 responses:
+  utter_compra_exitosa:
+  - text: ¡Compra exitosa! Gracias por tu pedido.
+  - text: El pedido se ha procesado con éxito. ¡Gracias por tu compra!
+  - text: ¡Felicidades! La compra se completó correctamente.
+  - text: Has finalizado tu compra con éxito. ¡Gracias!
+  - text: ¡Excelente elección! Tu compra ha sido confirmada.
+  - text: Hemos recibido tu pedido. ¡Gracias por comprar con nosotros!
+  - text: La transacción se realizó con éxito. ¡Gracias por confiar en nosotros!
+  - text: ¡Compra confirmada! Estamos preparando tu pedido.
   utter_info_registro:
   - text: 'Esta es la informacion que se registro nombre de usuario: {nombre} email: {correo_electronico} telefono: {telefono}.'
   utter_login_exitoso:
@@ -284,7 +296,7 @@ responses:
   - text: Revisemos los artículos que has agregado al carrito
   - text: A continuación, encontrarás los productos en tu carrito
   - text: Echemos un vistazo a lo que tienes en el carrito
-utter_carrito_elemento_no_encontrado:
+  utter_carrito_elemento_no_encontrado:
   - text: Lo siento, pero no encontré ese producto en tu carrito.
   - text: El producto que mencionaste no parece estar en tu carrito.
   - text: Parece que ese artículo no está en tu carrito.
@@ -343,7 +355,7 @@ utter_carrito_elemento_no_encontrado:
   - text: Pasate por "Frescura Natural" para comprar alguna fruta, son las mejores!!!!
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false
 entities:
 - producto
 - id

@@ -1,4 +1,5 @@
 import pandas as pd
+from datos.config import *
 
 # Crear un DataFrame con los datos
 
@@ -13,4 +14,4 @@ df = pd.DataFrame(data)
 
 
 # Guardar el DataFrame como un archivo CSV
-df.to_csv('./datos/dataset.csv', index=False)
+df.to_csv(path_dataset, index=False)
